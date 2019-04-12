@@ -1,0 +1,50 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	background:#fff;
+}
+
+#user_info{
+	display:none;
+}
+
+.baj {
+	display:none;
+}
+
+.header-wrap {
+	display:none;
+}
+
+form {
+	display:none;
+}
+
+#depart {
+	display:none;
+}
+
+.nttt {
+	display:none;
+}
+
+#page_num {
+	display:none;
+}
+
+.print {
+	display:none;
+}
+
+@page { 
+   size: landscape;
+}
+
+#divi {
+	display:none;
+}
+
+#style1 {
+	display:none;
+}

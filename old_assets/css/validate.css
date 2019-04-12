@@ -1,0 +1,70 @@
+@charset "utf-8";
+/* CSS Document */
+
+#add_user input{
+	padding: 6px;
+	color: #000;
+	font-family: Arial,  Verdana, Helvetica, sans-serif;
+	font-size: 13px;
+	border: 1px solid #cecece;
+}
+
+#add_user input.error{
+	background: #f8dbdb;
+	border-color: #e77776;
+}
+
+#add_user select.error{
+	background: #f8dbdb;
+	border-color: #e77776;
+}
+
+#add_user textarea{
+	width: 550px;
+	height: 80px;
+	padding: 6px;
+	color: #adaeae;
+	font-family: Arial,  Verdana, Helvetica, sans-serif;
+	font-style: italic;
+	font-size: 12px;
+	border: 1px solid #cecece;
+}
+
+#add_user textarea.error{
+	background: #f8dbdb;
+	border-color: #e77776;
+}
+
+#add_user div{
+	margin-bottom: 15px;
+}
+
+#add_user div span{
+	margin-left: 10px;
+	color: #b1b1b1;
+	font-size: 13px;
+	font-style: italic;
+}
+
+#add_user div span.error{
+	color: #e46c6e;
+}
+
+#add_user #send{
+	background: #6f9ff1;
+	color: #fff;
+	font-weight: 700;
+	font-style: normal;
+	border: 0;
+	cursor: pointer;
+}
+
+#add_user #send:hover{
+	background: #79a7f1;
+}
+
+#error{
+	visibility:hidden;
+	margin-bottom: 20px;
+	border: 0px solid #efefef;
+}
