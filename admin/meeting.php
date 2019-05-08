@@ -77,18 +77,22 @@ require_once("../includes/header.php");
 				<h4>Create Minute</h4>
 			</div>
 			<form class="card-body" method="post" action="add_meeting.php" enctype="multipart/form-data" id="meet">
-				<p align="left" class="ex">Office Type :
-					<select class="only" name="off_type">
+				<div class="form-group form-inline">
+					<label for="">Office Type :</label>
+					<select class="form-control ml-3" name="off_type">
 						<option value="<?php echo $office_type; ?>"> <?php echo $office_name; ?></option>
-					</select></p>
-				<br/>
-				<p align="left" class="ex">Office Location : &nbsp;&nbsp;&nbsp;&nbsp;
-					<select class="only" id="off_lo" name="off_loc">
+					</select>
+				</div>
+
+				<div class="form-inline form-group">
+					<label for="">Office Location :</label> &nbsp;&nbsp;&nbsp;&nbsp;
+					<select class="form-control" id="off_lo" name="off_loc">
 						<option value="<?php echo $office_location; ?>"> <?php echo $office_loc; ?></option>
-					</select></p>
-				<br/>
-				<p align="left" class="ex">Month : &nbsp;&nbsp;&nbsp;&nbsp;
-					<select class="only" name="rep_month" id="rep_month">
+					</select></div>
+
+				<div class="form-inline form-group">
+					<label for="">Month :</label> &nbsp;&nbsp;&nbsp;&nbsp;
+					<select class="form-control" name="rep_month" id="rep_month">
 						<option value=" ">-Month-</option>
 						<?php
 						$query_emonth = "Select * from emonth";
@@ -99,10 +103,11 @@ require_once("../includes/header.php");
 						}
 						?>
 					</select>
-				</p>
-				<br/>
-				<p align="left" class="ex">Year : &nbsp;&nbsp;&nbsp;&nbsp;
-					<select class="only" name="rep_year" id="rep_year">
+				</div>
+
+				<div class="form-group form-inline">
+					<label for="">Year :</label>&nbsp;&nbsp;&nbsp;&nbsp;
+					<select class="form-control" name="rep_year" id="rep_year">
 						<option value=" ">-Year-</option>
 						<?php
 						$query_eyear = "Select * from eyear";
@@ -113,16 +118,19 @@ require_once("../includes/header.php");
 						}
 						?>
 					</select>
-				</p>
-				<br/>
-				<p class="ex" align="left">Meeting Title : <input class="only" type="text" size="40" name="heading"
-				                                                  id="heading"/></p><br/>
-				<p align="left" class="ex">Minute Of Meeting : &nbsp;&nbsp;
-					<input class="only btn btn-dark" type="file" name="m_file"/>
-				</p><br/>
-				<p align="center">
+				</div>
+
+				<div class="form-group">
+					<label for="">Meeting Title :</label>
+					<input class="form-control" type="text" name="heading" id="heading"/>
+				</div>
+				<div class="form-group">
+					<label for="">Minute Of Meeting :</label> &nbsp;&nbsp;
+					<input class="form-control" type="file" name="m_file"/>
+				</div><br/>
+				<div class="col-md-12 d-flex justify-content-center">
 					<button class="btn btn-success" type="submit" id="send" value="Submit" name="submit">Create</button>
-				</p><br/>
+				</div>
 			</form>
 		</div>
 	</div><!-- close content -->

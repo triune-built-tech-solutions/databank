@@ -47,84 +47,88 @@
 	</div>
 	<div align="center">
 		<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" name="report_query">
+			<div class="col-md-12 d-flex justify-content-center form-group form-inline">
+				<select class="form-control" name="month">
+					<option value=" ">-Month-</option>
+					<?php
+					$query_emonth = "Select * from emonth";
+					$result_emonth = mysqli_query($connect, $query_emonth);
 
-			<select name="month">
-				<option value=" ">-Month-</option>
-				<?php
-				$query_emonth = "Select * from emonth";
-				$result_emonth = mysqli_query($connect, $query_emonth);
+					while ($row_emonth = mysqli_fetch_array($result_emonth)) {
+						echo "<option value='" . $row_emonth[0] . "'>" . $row_emonth[1] . "</option>";
+					}
+					?>
+				</select> &nbsp;&nbsp;&nbsp;
 
-				while ($row_emonth = mysqli_fetch_array($result_emonth)) {
-					echo "<option value='" . $row_emonth[0] . "'>" . $row_emonth[1] . "</option>";
-				}
-				?>
-			</select> &nbsp;&nbsp;&nbsp;
+				<select class="form-control" name="year">
+					<option value=" ">-Year-</option>
+					<?php
+					$query_eyear = "Select * from eyear";
+					$result_eyear = mysqli_query($connect, $query_eyear);
 
-			<select name="year">
-				<option value=" ">-Year-</option>
-				<?php
-				$query_eyear = "Select * from eyear";
-				$result_eyear = mysqli_query($connect, $query_eyear);
+					while ($row_eyear = mysqli_fetch_array($result_eyear)) {
+						echo "<option value='" . $row_eyear[1] . "'>" . $row_eyear[1] . "</option>";
+					}
+					?>
+				</select>&nbsp;&nbsp;&nbsp;
 
-				while ($row_eyear = mysqli_fetch_array($result_eyear)) {
-					echo "<option value='" . $row_eyear[1] . "'>" . $row_eyear[1] . "</option>";
-				}
-				?>
-			</select>&nbsp;&nbsp;&nbsp;
+				<select class="form-control" name="office_type" id="office_t">
+					<option value=" ">-Office_Type-</option>
+					<?php
+					$query_office_type = "Select * from office_type";
+					$result_office_type = mysqli_query($connect, $query_office_type);
 
-			<select name="office_type" id="office_t">
-				<option value=" ">-Office_Type-</option>
-				<?php
-				$query_office_type = "Select * from office_type";
-				$result_office_type = mysqli_query($connect, $query_office_type);
+					while ($row_office_type = mysqli_fetch_array($result_office_type)) {
+						echo "<option value='" . $row_office_type[0] . "'>" . $row_office_type[1] . "</option>";
+					}
+					?>
+				</select>&nbsp;&nbsp;&nbsp;
 
-				while ($row_office_type = mysqli_fetch_array($result_office_type)) {
-					echo "<option value='" . $row_office_type[0] . "'>" . $row_office_type[1] . "</option>";
-				}
-				?>
-			</select>&nbsp;&nbsp;&nbsp;
-
-			<select name="office_loc" id="office_loc">
-				<option value=" "></option>
-			</select>&nbsp;&nbsp;&nbsp;
-			<button class="btn btn-success" type="submit" name="begin_query" value="Begin Query">Begin Query</button>
+				<select class="form-control" name="office_loc" id="office_loc">
+					<option value=" "></option>
+				</select>&nbsp;&nbsp;&nbsp;
+				<button class="btn btn-success" type="submit" name="begin_query" value="Begin Query">Begin Query</button>
+			</div>
 		</form>
-		<br/>
+
 		<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" name="period_query">
-			Periodic Query : <select name="month_f" id="month_f">
-				<option value=" ">--From--</option>
-				<?php
-				$query_emonth = "Select * from emonth";
-				$result_emonth = mysqli_query($connect, $query_emonth);
+			<div class="col-md-12 form-inline form-group d-flex justify-content-center">
+				<label for="">Periodic Query :</label>
+				<select class="form-control ml-3" name="month_f" id="month_f">
+					<option value=" ">--From--</option>
+					<?php
+					$query_emonth = "Select * from emonth";
+					$result_emonth = mysqli_query($connect, $query_emonth);
 
-				while ($row_emonth = mysqli_fetch_array($result_emonth)) {
-					echo "<option value='" . $row_emonth[0] . "'>" . $row_emonth[1] . "</option>";
-				}
-				?>
-			</select> &nbsp;&nbsp;||&nbsp;&nbsp;
-			<select name="month_t" id="month_t">
-				<option value=" ">--To--</option>
-				<?php
-				$query_emonth = "Select * from emonth";
-				$result_emonth = mysqli_query($connect, $query_emonth);
+					while ($row_emonth = mysqli_fetch_array($result_emonth)) {
+						echo "<option value='" . $row_emonth[0] . "'>" . $row_emonth[1] . "</option>";
+					}
+					?>
+				</select> &nbsp;&nbsp;||&nbsp;&nbsp;
+				<select class="form-control" name="month_t" id="month_t">
+					<option value=" ">--To--</option>
+					<?php
+					$query_emonth = "Select * from emonth";
+					$result_emonth = mysqli_query($connect, $query_emonth);
 
-				while ($row_emonth = mysqli_fetch_array($result_emonth)) {
-					echo "<option value='" . $row_emonth[0] . "'>" . $row_emonth[1] . "</option>";
-				}
-				?>
-			</select>&nbsp;&nbsp;&nbsp;&nbsp;
-			<select name="p_year">
-				<option value=" ">-Year-</option>
-				<?php
-				$query_eyear = "Select * from eyear";
-				$result_eyear = mysqli_query($connect, $query_eyear);
+					while ($row_emonth = mysqli_fetch_array($result_emonth)) {
+						echo "<option value='" . $row_emonth[0] . "'>" . $row_emonth[1] . "</option>";
+					}
+					?>
+				</select>&nbsp;&nbsp;&nbsp;&nbsp;
+				<select class="form-control" name="p_year">
+					<option value=" ">-Year-</option>
+					<?php
+					$query_eyear = "Select * from eyear";
+					$result_eyear = mysqli_query($connect, $query_eyear);
 
-				while ($row_eyear = mysqli_fetch_array($result_eyear)) {
-					echo "<option value='" . $row_eyear[1] . "'>" . $row_eyear[1] . "</option>";
-				}
-				?>
-			</select>&nbsp;&nbsp;
-			<button class="btn btn-dark" type="submit" name="begin_period" value="Query">Query</button>
+					while ($row_eyear = mysqli_fetch_array($result_eyear)) {
+						echo "<option value='" . $row_eyear[1] . "'>" . $row_eyear[1] . "</option>";
+					}
+					?>
+				</select>&nbsp;&nbsp;
+				<button class="btn btn-dark" type="submit" name="begin_period" value="Query">Query</button>
+			</div>
 		</form>
 	</div>
 	<br/>
@@ -133,7 +137,7 @@
 			<h4>Procurement Progressive Reports</h4>
 		</div>
 		<div class="card-body">
-			<table class="table table-bordered table-responsive table-hover table-striped" id="dataTable" width="100%" cellspacing="0">
+			<table class="table table-bordered table-responsive table-hover" id="dataTable" width="100%" cellspacing="0">
 				<thead>
 				<tr>
 					<th>S/N</th>

@@ -46,16 +46,16 @@
 			}
 			?>
 		</div>
-		<div id="query_opt" class="table-responsive card shadow p-4 mb-5">
-			<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" name="report_query">
-				<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-					<tr>
-						<th colspan="3"><h3>Query Report</h3></th>
-					</tr>
-					<tr>
-						<td class="none" align="left">
-							<input type="checkbox" name="" value=""/> Month : &nbsp;&nbsp;
-							<select name="month">
+		<div id="query_opt" class="card shadow">
+			<div class="card-header">
+				<h4>Query Report</h4>
+			</div>
+			<div class="card-body">
+				<form class="row" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" name="report_query">
+					<div class="col-md-6">
+						<div class="form-group form-inline">
+							<label for="">Month : </label>
+							<select class="form-control ml-3" name="month">
 								<option value=" ">-Month-</option>
 								<?php
 								$query_emonth = "Select * from emonth";
@@ -65,9 +65,11 @@
 									echo "<option value='" . $row_emonth[0] . "'>" . $row_emonth[1] . "</option>";
 								}
 								?>
-							</select><br/>
-							<input type="checkbox" name=""/> Year : &nbsp;&nbsp;
-							<select name="year">
+							</select>
+						</div>
+						<div class="form-group form-inline">
+							<label for="">Year : </label>
+							<select class="form-control ml-3" name="year">
 								<option value=" ">-Year-</option>
 								<?php
 								$query_eyear = "Select * from eyear";
@@ -77,9 +79,11 @@
 									echo "<option value='" . $row_eyear[1] . "'>" . $row_eyear[1] . "</option>";
 								}
 								?>
-							</select><br/>
-							<input type="checkbox" name=""/> Report Type : &nbsp;&nbsp;
-							<select id="rep_type" name="rep_type">
+							</select>
+						</div>
+						<div class="form-group form-inline">
+							<label for="">Report Type :</label>
+							<select class="form-control ml-3" id="rep_type" name="rep_type">
 								<option value=" ">-Report Type-</option>
 								<?php
 								$query_report_type = "Select * from report_type";
@@ -90,10 +94,12 @@
 								}
 
 								?>
-							</select><br/>
-						</td>
-						<td class="none"><input type="checkbox" name=""/> Office Type : &nbsp;&nbsp;
-							<select name="office_type" id="office_t">
+							</select>
+						</div>
+
+						<div class="form-group form-inline">
+							<label for="">Office Type :</label>
+							<select class="form-control ml-3" name="office_type" id="office_t">
 								<option value=" ">-Office_Type-</option>
 								<?php
 								$query_office_type = "Select * from office_type";
@@ -103,56 +109,39 @@
 									echo "<option value='" . $row_office_type[0] . "'>" . $row_office_type[1] . "</option>";
 								}
 								?>
-							</select><br/>
-							<input type="checkbox"/> Office Location : &nbsp;&nbsp;
-							<select name="office_loc" id="office_loc">
+							</select>
+						</div>
+						<div class="form-group form-inline">
+							<label for="">Office Location :</label>
+							<select class="form-control ml-3" name="office_loc" id="office_loc">
 								<option value=" "></option>
 							</select><br/>
-							<!-- input type="checkbox" name="" /> Department : &nbsp;&nbsp;
-							<select name="department" id="dept"><option value=" ">--Department--</option>
-							<!--?php
-							$query_department = "Select * from department";
-							$result_department = mysql_query($query_department, $connect);
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group ">
+							<label for="">Activities :</label>
+							<textarea class="form-control" name="activities"></textarea>
+						</div>
+						<div class="form-group">
+							<label for="">Achievements :</label>
+							<textarea class="form-control" name="archievements"></textarea>
+						</div>
+						<div class="form-group">
+							<label for="">Constraint :</label>
+							<textarea class="form-control" name="constraint"></textarea>
+						</div>
+					</div>
+					<div class="col-md-12 d-flex justify-content-center">
+						<button class="btn btn-success" type="submit" name="begin_query" value="Begin Query">Begin
+							Query
+						</button>
+					</div>
+				</form>
+			</div>
 
-							while($row_department = mysql_fetch_array($result_department)){
-								echo "<option value='".$row_department[0]."'>". $row_department[1] . "</option>";
-							}
-							?>
-							</select><br />
-							<input type="checkbox" name="" value="" /> Division : &nbsp;&nbsp;
-							<select name="division" id="div">
-							<option value=" "> </option>
-
-							</select><br />
-							<input type="checkbox" name="" /> Section : &nbsp;&nbsp;
-							<select name="section"><option value=" ">-Section-</option>
-							<!-- ?php
-							$query_section = "Select * from section";
-							$result_section = mysql_query($query_section, $connect);
-
-							while($row_section = mysql_fetch_array($result_section)){
-								echo "<option value='".$row_section[0]."'>". $row_section[2] . "</option>";
-							}
-							?>
-							</select -->
-						</td>
-						<td class="none"><input type="checkbox" name=""/> Activities : &nbsp;&nbsp;
-							<textarea name="activities" rows="4" cols="15"></textarea>
-							<br/>
-							<input type="checkbox" name=""/> Achievements : &nbsp;&nbsp;
-							<textarea name="archievements" rows="4" cols="15"></textarea>
-							<br/>
-							<input type="checkbox" name=""/> Constraint : &nbsp;&nbsp;
-							<textarea name="constraint" rows="4" cols="15"></textarea>
-						</td>
-					</tr>
-					<tr>
-						<td colspan="3"><input type="submit" name="begin_query" value="Begin Query"/></td>
-					</tr>
-				</table>
-			</form>
 		</div>
-		<div id="show_rep" class="card shadow p-4 mt-5">
+		<div id="show_rep" class="card shadow mt-5">
 			<?php
 			if (isset($_POST['begin_query'])) {
 				$month = $_POST['month'];
@@ -218,100 +207,106 @@
 			}
 
 			?>
+			<div class="card-header">
+				<h4>All reports</h4>
+			</div>
 
-			<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-				<tr>
-					<th colspan="9">View all reports</th>
-				</tr>
-				<tr>
-					<th>S/N</th>
-					<th>Office Type</th>
-					<th>Office Location</th>
-					<th>Department</th>
-					<th>Month</th>
-					<th>Year</th>
-					<th>Added by</th>
-				</tr>
-				<?php
-				if (isset($opt)) {
-					$query_report_view = "select * from report_log GROUP BY month,id,year, office_location order by year desc, month desc, prog_no, sub_prog_no, obj_no limit 40";
-				} else {
-					$query_report_view = "select * from report_log GROUP BY month,id,year, office_location order by year desc, month desc, prog_no, sub_prog_no, obj_no limit 40";
-				}
+			<div class="card-body">
+				<table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+					<thead>
+					<tr>
+						<th>S/N</th>
+						<th>Office Type</th>
+						<th>Office Location</th>
+						<th>Department</th>
+						<th>Month</th>
+						<th>Year</th>
+						<th>Added by</th>
+					</tr>
+					</thead>
 
-				$result_report_view = mysqli_query($connect, $query_report_view) or
-				die ("Error Connecting to Server" . mysqli_error($GLOBALS["___mysqli_ston"]));
-				$rest = mysqli_num_rows($result_report_view);
-
-				$rws = count($rest);
-				if ($rws == 0) {
-					echo "<p>No match was found in the database.</p>";
-				} else {
-					for ($i = 0; $i < mysqli_num_rows($result_report_view); $i++) {
-						$rep_id = mysqli_result($result_report_view, $i, "id");
-						$office_type = mysqli_result($result_report_view, $i, "office_type");
-						$office_location = mysqli_result($result_report_view, $i, "office_location");
-						$prog_no = mysqli_result($result_report_view, $i, "prog_no");
-						$sub_prog_no = mysqli_result($result_report_view, $i, "sub_prog_no");
-						$obj_no = mysqli_result($result_report_view, $i, "obj_no");
-						$rep_type = mysqli_result($result_report_view, $i, "report_type");
-						$department = mysqli_result($result_report_view, $i, "department");
-						$unit = mysqli_result($result_report_view, $i, "unit");
-						$added_by = mysqli_result($result_report_view, $i, "added_by");
-						$month = mysqli_result($result_report_view, $i, "month");
-						$year = mysqli_result($result_report_view, $i, "year");
-						$io = $i + 1;
-
-						$query_office = "SELECT * FROM area_office where office_type_id = $office_type and id = $office_location";
-						$result_office = mysqli_query($connect, $query_office);
-
-						while ($row_office = mysqli_fetch_array($result_office)) {
-							$office_location = $row_office['2'];
-						}
-						if ($department == "") {
-							$query_unit = "SELECT * FROM unit where id = $unit";
-							$result_unit = mysqli_query($connect, $query_unit);
-
-							while ($row_unit = mysqli_fetch_array($result_unit)) {
-								$department = $row_unit[1];
-							}
-						} else {
-							$query_dept = "SELECT * FROM department where id = $department";
-							$result_dept = mysqli_query($connect, $query_dept);
-
-							while ($row_dept = mysqli_fetch_array($result_dept)) {
-								$department = $row_dept[1];
-							}
-						}
-
-						if ($i % 2) {
-							$bg_color = "#a8c2f7";
-						} else {
-							$bg_color = "#f0f9f0";
-						}
-
-						$query_office = "SELECT type FROM office_type where id = $office_type";
-						$result_office = mysqli_query($connect, $query_office);
-
-						while ($row_office = mysqli_fetch_assoc($result_office)) {
-							$office_name = $row_office['type'];
-						}
-						$month_query = mysqli_query($connect, "select * from emonth where emonth_id = $month");
-						$month_row = mysqli_fetch_array($month_query);
-						echo '<tr>
-		<td bgcolor="' . $bg_color . '">' . $io . '</td>
-		<td bgcolor="' . $bg_color . '">' . $office_name . '</td>
-		<td bgcolor="' . $bg_color . '">' . $office_location . '</td>
-		<td bgcolor="' . $bg_color . '">' . $department . '</td>
-		<td bgcolor="' . $bg_color . '">' . $month_row[1] . '</td>
-		<td bgcolor="' . $bg_color . '">' . $year . '</td>
-		<td bgcolor="' . $bg_color . '">' . $added_by . '</td>
-		<td bgcolor="' . $bg_color . '"> <a href="each_rep.php?repId=' . $rep_id . '">view</a></td>
-		</tr>';
+					<?php
+					if (isset($opt)) {
+						$query_report_view = "select * from report_log GROUP BY month,id,year, office_location order by year desc, month desc, prog_no, sub_prog_no, obj_no limit 40";
+					} else {
+						$query_report_view = "select * from report_log GROUP BY month,id,year, office_location order by year desc, month desc, prog_no, sub_prog_no, obj_no limit 40";
 					}
-				}
-				?>
-			</table>
+
+					$result_report_view = mysqli_query($connect, $query_report_view) or
+					die ("Error Connecting to Server" . mysqli_error($GLOBALS["___mysqli_ston"]));
+					$rest = mysqli_num_rows($result_report_view);
+
+					$rws = count($rest);
+					if ($rws == 0) {
+						echo "<p>No match was found in the database.</p>";
+					} else {
+						for ($i = 0; $i < mysqli_num_rows($result_report_view); $i++) {
+							$rep_id = mysqli_result($result_report_view, $i, "id");
+							$office_type = mysqli_result($result_report_view, $i, "office_type");
+							$office_location = mysqli_result($result_report_view, $i, "office_location");
+							$prog_no = mysqli_result($result_report_view, $i, "prog_no");
+							$sub_prog_no = mysqli_result($result_report_view, $i, "sub_prog_no");
+							$obj_no = mysqli_result($result_report_view, $i, "obj_no");
+							$rep_type = mysqli_result($result_report_view, $i, "report_type");
+							$department = mysqli_result($result_report_view, $i, "department");
+							$unit = mysqli_result($result_report_view, $i, "unit");
+							$added_by = mysqli_result($result_report_view, $i, "added_by");
+							$month = mysqli_result($result_report_view, $i, "month");
+							$year = mysqli_result($result_report_view, $i, "year");
+							$io = $i + 1;
+
+							$query_office = "SELECT * FROM area_office where office_type_id = $office_type and id = $office_location";
+							$result_office = mysqli_query($connect, $query_office);
+
+							while ($row_office = mysqli_fetch_array($result_office)) {
+								$office_location = $row_office['2'];
+							}
+							if ($department == "") {
+								$query_unit = "SELECT * FROM unit where id = $unit";
+								$result_unit = mysqli_query($connect, $query_unit);
+
+								while ($row_unit = mysqli_fetch_array($result_unit)) {
+									$department = $row_unit[1];
+								}
+							} else {
+								$query_dept = "SELECT * FROM department where id = $department";
+								$result_dept = mysqli_query($connect, $query_dept);
+
+								while ($row_dept = mysqli_fetch_array($result_dept)) {
+									$department = $row_dept[1];
+								}
+							}
+
+							if ($i % 2) {
+								$bg_color = "#a8c2f7";
+							} else {
+								$bg_color = "#f0f9f0";
+							}
+
+							$query_office = "SELECT type FROM office_type where id = $office_type";
+							$result_office = mysqli_query($connect, $query_office);
+
+							while ($row_office = mysqli_fetch_assoc($result_office)) {
+								$office_name = $row_office['type'];
+							}
+							$month_query = mysqli_query($connect, "select * from emonth where emonth_id = $month");
+							$month_row = mysqli_fetch_array($month_query);
+							echo '<tr>
+		<td >' . $io . '</td>
+		<td >' . $office_name . '</td>
+		<td >' . $office_location . '</td>
+		<td >' . $department . '</td>
+		<td >' . $month_row[1] . '</td>
+		<td >' . $year . '</td>
+		<td >' . $added_by . '</td>
+		<td > <a href="each_rep.php?repId=' . $rep_id . '">view</a></td>
+		</tr>';
+						}
+					}
+					?>
+				</table>
+			</div>
+
 		</div>
 	</div><!-- close content -->
 	<div id="divi">

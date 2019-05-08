@@ -52,74 +52,90 @@
 				<h4>Query Report</h4>
 			</div>
 			<div class="card-body">
-				<form action="<?php $_SERVER['PHP_SELF']; ?>" method="post">
-					<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-						<tr>
-							<td class="none">
-								<input type="checkbox" name="" value=""/> Month : &nbsp;&nbsp;
-								<select name="month">
-									<option value=" ">-Month-</option>
-									<?php
-									$query_emonth = "Select * from emonth";
-									$result_emonth = mysqli_query($connect, $query_emonth);
+				<form class="row" action="<?php $_SERVER['PHP_SELF']; ?>" method="post">
+					<div class="col-md-6">
+						<div class="form-group form-inline">
+							<label for="">Month : &nbsp;</label> &nbsp;
+							<select class="form-control ml-3" name="month">
+								<option value=" ">-Month-</option>
+								<?php
+								$query_emonth = "Select * from emonth";
+								$result_emonth = mysqli_query($connect, $query_emonth);
 
-									while ($row_emonth = mysqli_fetch_array($result_emonth)) {
-										echo "<option value='" . $row_emonth[0] . "'>" . $row_emonth[1] . "</option>";
-									}
-									?>
-								</select><br/>
-								<input type="checkbox" name="" value=""/> Year : &nbsp;&nbsp;
-								<select name="year">
-									<option value=" ">-Year-</option>
-									<?php
-									$query_eyear = "Select * from eyear";
-									$result_eyear = mysqli_query($connect, $query_eyear);
+								while ($row_emonth = mysqli_fetch_array($result_emonth)) {
+									echo "<option value='" . $row_emonth[0] . "'>" . $row_emonth[1] . "</option>";
+								}
+								?>
 
-									while ($row_eyear = mysqli_fetch_array($result_eyear)) {
-										echo "<option value='" . $row_eyear[1] . "'>" . $row_eyear[1] . "</option>";
-									}
-									?>
-								</select><br/>
-								<input type="checkbox" name="" value=""/> Report Type : &nbsp;&nbsp;
-								<select id="rep_type" name="rep_type">
-									<option value=" ">-Report Type-</option>
-									<?php
-									$query_report_type = "Select * from report_type";
-									$result_report_type = mysqli_query($connect, $query_report_type);
+							</select>
+						</div>
+						<div class="form-inline form-group">
+							<label for="">Year :</label>
+							<select class="form-control ml-3" name="year">
+								<option value=" ">-Year-</option>
+								<?php
+								$query_eyear = "Select * from eyear";
+								$result_eyear = mysqli_query($connect, $query_eyear);
 
-									while ($row_report_type = mysqli_fetch_array($result_report_type)) {
-										echo "<option value='" . $row_report_type[1] . "'>" . $row_report_type[1] . "</option>";
-									}
+								while ($row_eyear = mysqli_fetch_array($result_eyear)) {
+									echo "<option value='" . $row_eyear[1] . "'>" . $row_eyear[1] . "</option>";
+								}
+								?>
+							</select>
+						</div>
+						<div class="form-group form-inline">
+							<label for="">Report Type : </label>
+							<select class="form-control ml-3" id="rep_type" name="rep_type">
+								<option value=" ">-Report Type-</option>
+								<?php
+								$query_report_type = "Select * from report_type";
+								$result_report_type = mysqli_query($connect, $query_report_type);
 
-									?>
-								</select><br/>
-							</td>
-							<td class="none"><input type="checkbox" name="" value=""/> Office Type : &nbsp;&nbsp;
-								<select name="office_type">
-									<option> <?php echo $office_name ?></option>
+								while ($row_report_type = mysqli_fetch_array($result_report_type)) {
+									echo "<option value='" . $row_report_type[1] . "'>" . $row_report_type[1] . "</option>";
+								}
 
-								</select><br/>
-								<input type="checkbox" name="" value=""/> Office Location : &nbsp;&nbsp;
-								<select name="office_loc">
-									<option><?php echo $office_loc ?></option>
+								?>
+							</select>
+						</div>
 
-								</select><br/>
-							</td>
-							<td class="none"><input type="checkbox" name="" value=""/> Activities : &nbsp;&nbsp;
-								<textarea name="activities" rows="4" cols="15"></textarea>
-								<br/>
-								<input type="checkbox" name="" value=""/> Achievements : &nbsp;&nbsp;
-								<textarea name="archievements" rows="4" cols="15"></textarea>
-								<br/>
-								<input type="checkbox" name="" value=""/> Constraint : &nbsp;&nbsp;
-								<textarea name="constraint" rows="4" cols="15"></textarea>
-							</td>
-						</tr>
-						<tr>
-							<td colspan="12"><button class="btn btn-success" type="submit" name="begin_query" value="Begin Query">Begin Query</button></td>
-						</tr>
+						<div class="form-group form-inline">
+							<label for="">Office Type :</label> &nbsp;&nbsp;
+							<select class="form-control ml-3" name="office_type">
+								<option> <?php echo $office_name ?></option>
+
+							</select>
+						</div>
+						<div class="form-group form-inline">
+							<label>Office Location :</label>
+							<select class="form-control ml-3" name="office_loc">
+								<option><?php echo $office_loc ?></option>
+
+							</select>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="">Activities :</label>
+							<textarea class="form-control" name="activities"></textarea>
+						</div>
+						<div class="form-group">
+							<label for="">Achievements :</label>
+							<textarea class="form-control" name="archievements"></textarea>
+
+						</div>
+						<div class="form-group">
+							<label for="">Constraint :</label>
+							<textarea class="form-control" name="constraint"></textarea>
+						</div>
+					</div>
+
+					<div class="mt-5 col-md-12 form-group form-inline d-flex justify-content-center">
+						<button class="btn btn-success" type="submit" name="begin_query" value="Begin Query">Begin Query</button>
+					</div>
+
 				</form>
-				</table>
+
 			</div>
 
 		</div>
@@ -173,7 +189,7 @@
 			</div>
 
 			<div class="card-body">
-				<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+				<table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
 
 					<tr>
 						<th>S/N</th>
@@ -272,18 +288,18 @@
 							$month_query = mysqli_query($connect, "select * from emonth where emonth_id = $month");
 							$month_row = mysqli_fetch_array($month_query);
 							echo '<tr>
-		<td bgcolor="' . $bg_color . '">' . $io . '</td>
-		<td bgcolor="' . $bg_color . '">' . $office_name . '</td>
-		<td bgcolor="' . $bg_color . '">' . $office_location . '</td>
-		<td bgcolor="' . $bg_color . '">' . $department . '</td>
-		<td bgcolor="' . $bg_color . '">' . $prog_no . '</td>
-		<td bgcolor="' . $bg_color . '">' . $sub_prog_no . '</td>
-		<td bgcolor="' . $bg_color . '">' . $obj_no . '</td>
-		<td bgcolor="' . $bg_color . '">' . $month_row[1] . '</td>
-		<td bgcolor="' . $bg_color . '">' . $year . '</td>
-		<td bgcolor="' . $bg_color . '">' . $added_by . '</td>
+		<td >' . $io . '</td>
+		<td >' . $office_name . '</td>
+		<td >' . $office_location . '</td>
+		<td >' . $department . '</td>
+		<td >' . $prog_no . '</td>
+		<td >' . $sub_prog_no . '</td>
+		<td >' . $obj_no . '</td>
+		<td >' . $month_row[1] . '</td>
+		<td >' . $year . '</td>
+		<td >' . $added_by . '</td>
 		
-		<td bgcolor="' . $bg_color . '"> <a href="edit_rep.php?repId=' . $rep_id . '">edit</a></td>
+		<td > <a href="edit_rep.php?repId=' . $rep_id . '">edit</a></td>
 		</tr>';
 						}
 					}
@@ -291,33 +307,29 @@
 				</table>
 			</div>
 
+			<div align="center" id="page_num">
+				<?php
+				$next = ($stat + 1);
+				// let's create the dynamic links now
+				if ($stat > 1) {
+					$url = $_SERVER['PHP_SELF'] . "?stat=" . --$stat;
+					echo "<a href=\"$url\">Previous</a>";
+				}
+				// page numbering links now
+				for ($i = 1; $i <= $pages; $i++) {
+					if ($i == 50)
+						break;
+					$url = $_SERVER['PHP_SELF'] . "?stat=" . $i;
+					echo "  <a href=\"$url\">$i</a>  ";
+				}
+				if (isset($_GET['stat']) && $_GET['stat'] < $pages) {
+					$url = $_SERVER['PHP_SELF'] . "?stat=$next";
+					echo "<a href=\"$url\">Next</a>";
+				}
 
-		</div>
-		<div align="center" id="page_num">
-			<?php
-			$next = ($stat + 1);
-			// let's create the dynamic links now
-			if ($stat > 1) {
-				$url = $_SERVER['PHP_SELF'] . "?stat=" . --$stat;
-				echo "<a href=\"$url\">Previous</a>";
-			}
-			// page numbering links now
-			for ($i = 1; $i <= $pages; $i++) {
-				if ($i == 50)
-					break;
-				$url = $_SERVER['PHP_SELF'] . "?stat=" . $i;
-				echo "  <a href=\"$url\">$i</a>  ";
-			}
-			if (isset($_GET['stat']) && $_GET['stat'] < $pages) {
-				$url = $_SERVER['PHP_SELF'] . "?stat=$next";
-				echo "<a href=\"$url\">Next</a>";
-			}
-
-			?>
+				?>
+			</div>
 		</div>
 	</div><!-- close content -->
-	<div id="divi">
-
-	</div><br/>
 
 <?php require_once("../includes/footer.php"); ?>

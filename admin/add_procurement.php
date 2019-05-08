@@ -78,18 +78,23 @@
 		</div>
 		<div class="card-body">
 			<form method="post" action="process_nisdp_part.php" name="scheduled" id="scheduled">
-				<p align="left" class="ex">Office Type :
-					<select class="only" name="off_type">
+				<div class="form-group form-inline">
+					<label for="">Office Type :</label>
+					<select class="form-control ml-3"  name="off_type">
 						<option value="<?php echo $office_type; ?>"> <?php echo $office_name; ?></option>
-					</select></p>
-				<br/>
-				<p align="left" class="ex">Office Location : &nbsp;&nbsp;&nbsp;&nbsp;
-					<select class="only" name="off_loc">
+					</select>
+				</div>
+
+				<div align="left" class="form-inline form-group">
+					<label for="">Office Location :</label>&nbsp;&nbsp;&nbsp;&nbsp;
+					<select class="form-control ml-3" name="off_loc">
 						<option value="<?php echo $office_location; ?>"> <?php echo $office_loc; ?></option>
-					</select></p>
-				<br/>
-				<p align="left" class="ex">Month : &nbsp;&nbsp;&nbsp;&nbsp;
-					<select class="only" name="rep_month" id="rep_month">
+					</select>
+				</div>
+
+				<div class="form-group form-inline">
+					<label for="">Month :</label>&nbsp;&nbsp;&nbsp;&nbsp;
+					<select class="form-control ml-3"  name="rep_month" id="rep_month">
 						<option value=" ">-Month-</option>
 						<?php
 						$query_emonth = "Select * from emonth";
@@ -99,10 +104,11 @@
 							echo "<option value='" . $row_emonth[0] . "'>" . $row_emonth[1] . "</option>";
 						}
 						?>
-					</select></p>
-				<br/>
-				<p align="left" class="ex">Year : &nbsp;&nbsp;&nbsp;&nbsp;
-					<select class="only" name="rep_year" id="rep_year">
+					</select>
+				</div>
+
+				<div class="form-group form-inline">Year : &nbsp;&nbsp;&nbsp;&nbsp;
+					<select class="form-control ml-3" name="rep_year" id="rep_year">
 						<option value=" ">-Year-</option>
 						<?php
 						$query_eyear = "Select * from eyear";
@@ -112,15 +118,34 @@
 							echo "<option value='" . $row_eyear[1] . "'>" . $row_eyear[1] . "</option>";
 						}
 						?>
-					</select></p>
-				<br/>
-				<p align="left" class="ex input-group">Activity: &nbsp;&nbsp;<input class="form-control" type="text" size="25" name="participants" id="participants"/></p><br/>
-				<p align="left" class="ex input-group">User Department: &nbsp;&nbsp;<input class="form-control" type="text" size="25" name="organization" id="organization"/></p>
-				<br/>
-				<p class="ex input-group" align="left">Value/Cost : &nbsp;&nbsp;<input class="form-control" type="text" size="25" name="email" id="email"/></p><br/>
-				<p class="ex input-group" align="left">Objective : &nbsp;&nbsp;<input class="form-control" type="text" size="25" name="address" id="address"/></p><br/>
-				<p align="left" class="ex input-group">Action Taken : &nbsp;&nbsp;<input class="form-control" type="text" size="25" name="phone" id="phone"/></p><br/>
-				<p align="center"><button class="btn btn-success" type="submit" id="send" value="Submit" name="submit">Submit</button></p><br/>
+					</select>
+				</div>
+
+				<div class="form-group">
+					<label for="">Activity:</label>&nbsp;&nbsp;
+					<input class="form-control" type="text" name="participants" id="participants"/>
+				</div>
+
+				<div class="form-group"> &nbsp;&nbsp;
+					<label for="">User Department:</label>
+					<input class="form-control" type="text" name="organization" id="organization"/>
+				</div>
+
+				<div class="form-group"> &nbsp;&nbsp;
+					<label for="">Value/Cost :</label>
+					<input class="form-control" type="text" name="email" id="email"/>
+				</div>
+				<div class="form-group"> &nbsp;&nbsp;
+					<label for="">Objective :</label>
+					<input class="form-control" type="text" name="address" id="address"/>
+				</div>
+				<div class="form-group"> &nbsp;&nbsp;
+					<label for="">Action Taken: </label>
+					<input class="form-control" type="text" name="phone" id="phone"/>
+				</div>
+				<div class="d-flex justify-content-center">
+					<button class="btn btn-success" type="submit" id="send" value="Submit" name="submit">Submit</button>
+				</div>
 			</form>
 		</div>
 

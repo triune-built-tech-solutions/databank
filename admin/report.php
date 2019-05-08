@@ -115,10 +115,9 @@ require_once("../includes/header.php");
 
 		<?php
 
-			if (isset($_GET['msg']))
-			{
-				echo Alert::message($_GET['msg'], ['success' => "Record Inserted", 'failed' => "Error inserting Record"], 'modal');
-			}
+		if (isset($_GET['msg'])) {
+			echo Alert::message($_GET['msg'], ['success' => "Record Inserted", 'failed' => "Error inserting Record"], 'modal');
+		}
 
 		?>
 
@@ -126,11 +125,13 @@ require_once("../includes/header.php");
 			<div class="card-header">
 				<h4>Add Your Report</h4>
 			</div>
-			<form class="card-body" name="report" action="log_query.php" method="post" id="rep">
-				<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-					<tr>
-						<th>Report Type <br/>
-							<select name="report_type" id="rep_type">
+
+			<div class="card-body">
+				<form class="row" name="report" action="log_query.php" method="post" id="rep">
+					<div class="col-md-6">
+						<div class="form-group form-inline">
+							<label for="">Report Type: </label>
+							<select class="form-control ml-3" name="report_type" id="rep_type">
 								<option value=" ">-report type-</option>
 								<?php
 								$query_report_type = "Select * from report_type";
@@ -142,9 +143,10 @@ require_once("../includes/header.php");
 
 								?>
 							</select>
-						</th>
-						<th>Month<br/>
-							<select name="month" id="rep_m">
+						</div>
+						<div class="form-group form-inline">
+							<label for="">Month: </label>
+							<select class="form-control ml-3" name="month" id="rep_m">
 								<option value=" ">-Month-</option>
 								<?php
 								$query_emonth = "Select * from emonth";
@@ -155,9 +157,10 @@ require_once("../includes/header.php");
 								}
 								?>
 							</select>
-						</th>
-						<th colspan="2">Year<br/>
-							<select name="year" id="prog_year">
+						</div>
+						<div class="form-group form-inline">
+							<label for="">Year: </label>
+							<select class="form-control ml-3" name="year" id="prog_year">
 								<option value=" ">-Year-</option>
 								<?php
 								$query_eyear = "Select * from eyear";
@@ -168,14 +171,19 @@ require_once("../includes/header.php");
 								}
 								?>
 							</select>
-						</th>
-						<th colspan="2">Annual Target<br/>
-							<select name="annual_target" id="ann_targ">
+						</div>
+						<div class="form-group form-inline">
+							<label for="">Annual Target Type: </label>
+							<select class="form-control ml-3" name="annual_target" id="ann_targ">
 								<option value=" ">--SELECT--</option>
 								<option value="1">Continues</option>
 								<option value="2">Periodic</option>
-							</select><br/>
-							<select name="month_f" id="month_f">
+							</select>
+
+						</div>
+						<div class="form-group form-inline">
+							<label for="">Annual Target Interval: </label>
+							<select class="form-control ml-3" name="month_f" id="month_f">
 								<option value=" ">--From--</option>
 								<?php
 								$query_emonth = "Select * from emonth";
@@ -185,8 +193,8 @@ require_once("../includes/header.php");
 									echo "<option value='" . $row_emonth[1] . "'>" . $row_emonth[1] . "</option>";
 								}
 								?>
-							</select> &nbsp;&nbsp;||&nbsp;&nbsp;
-							<select name="month_t" id="month_t">
+							</select> &nbsp;&nbsp;
+							<select class="form-control ml-3" name="month_t" id="month_t">
 								<option value=" ">--To--</option>
 								<?php
 								$query_emonth = "Select * from emonth";
@@ -197,70 +205,64 @@ require_once("../includes/header.php");
 								}
 								?>
 							</select>
-						</th>
-					</tr>
-					<tr>
-						<th>Prog N<u>o</u><br/>
-							<select name="prog_no" id="prog_no">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group form-inline">
+							<label for="">Prog. No: </label>
+							<select class="form-control ml-3" name="prog_no" id="prog_no">
 
 							</select>
-						</th>
-						<th>Prog Title <br/><span style="font-weight:normal" id="prog_title"> </span></th>
-						<th>Sub Prog N<u>o</u><br/>
-							<select name="sub_prog_no" id="sub_prog_no">
-
-							</select></th>
-						<th>Sub Prog Title <br/><span style="font-weight:normal" id="sub_prog_title"> </span></th>
-						<th>Objective N<u>o</u><br/>
-							<select name="obj_no" id="obj_no">
+						</div>
+						<div class="form-group">
+							<label for="">Prog. Title: </label>
+							<p class="text-gray-900" id="prog_title"></p>
+						</div>
+						<div class="form-group form-inline">
+							<label for="">Sub Prog. No: </label>
+							<select class="form-control ml-3" name="sub_prog_no" id="sub_prog_no">
 
 							</select>
-						</th>
-					</tr>
-					<tr>
-						<th colspan="6">Objectives <br/><span style="font-weight:normal" id="obj_title"> </span></th>
-					</tr>
-					</tr>
-					<tr>
-						<th colspan="6">ACTIVITIES CARRIED OUT</th>
-					</tr>
-					<tr>
-						<td colspan="6">
-<textarea name="activities" id="act" class="w-100 form-control">
-</textarea>
-						</td>
-					</tr>
-					<tr>
-						<th colspan="6">ACHIEVEMENTS</th>
-					</tr>
-					<tr>
-						<td colspan="6">
-<textarea name="achievements" id="arch" class="w-100 form-control">
-</textarea>
-						</td>
-					</tr>
-					<tr>
-						<th colspan="6">CONSTRAINT</th>
-					</tr>
-					<tr>
-						<td colspan="6">
-<textarea name="constraint" id="cons" class="w-100 form-control">
-</textarea>
-						</td>
-					</tr>
-				</table>
-				<hr/>
-				<p align="center">
-					<button type="reset" value="Clear" class="btn btn-dark btn-sm" name="clear">Clear</button>&nbsp;&nbsp;&nbsp;&nbsp;
-					<button class="btn btn-success btn-sm" type="submit" value="Submit" name="submit">Submit</button>&nbsp;
-					<a class="btn btn-danger btn-sm" href="home.php">Exit</a>
-				</p>
-			</form>
+						</div>
+						<div class="form-group">
+							<label for="">Sub Prog. Title</label>
+							<p class="text-gray-900" id="sub_prog_title"> </p>
+						</div>
+						<div class="form-group form-inline">
+							<label for="">Objective No: </label>
+							<select class="form-control ml-3" name="obj_no" id="obj_no">
+
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="">Objectives: </label>
+							<p class="text-gray-900" id="obj_title"> </p>
+						</div>
+					</div>
+
+					<div class="form-group col-md-4">
+						<label class="text-gray-900">Activities Carried-out</label>
+						<textarea name="activities" id="act" class="w-100 form-control"></textarea>
+					</div>
+					<div class="form-group col-md-4">
+						<label class="text-gray-900">Achievements</label>
+						<textarea  name="achievements" id="arch" class="w-100 form-control"></textarea>
+					</div>
+
+					<div class="form-group col-md-4">
+						<label class="text-gray-900">Constraints</label>
+						<textarea name="constraint" id="cons" class="w-100 form-control"></textarea>
+					</div>
+
+					<div class="mt-5 col-md-12 form-group form-inline d-flex justify-content-center">
+						<button type="reset" value="Clear" class="btn btn-dark" name="clear">Clear</button>&nbsp;&nbsp;&nbsp;&nbsp;
+						<button class="btn btn-success mr-3" type="submit" value="Submit" name="submit"> Submit </button>&nbsp;
+						<a class="btn btn-danger" href="home.php">Exit</a>
+					</div>
+				</form>
+			</div>
 		</div>
 
 	</div><!-- close content -->
-	<div id="divi">
-
-	</div><br/>
 
 <?php require_once("../includes/footer.php"); ?>

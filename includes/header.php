@@ -420,10 +420,6 @@ $result_access = mysqli_query($connect, $query_access);
 						<!-- Dropdown - User Information -->
 						<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
 						     aria-labelledby="userDropdown">
-							<a class="dropdown-item" href="#">
-								<i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-								Settings
-							</a>
 							<div class="dropdown-divider"></div>
 							<a class="dropdown-item" href="../admin/signout.php" data-toggle="modal"
 							   data-target="#logoutModal">
