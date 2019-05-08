@@ -1,253 +1,478 @@
 <?php
-$links = '
-<td class="side_link" bgcolor="#A80203"><span style="font-size:14px; font-weight:bold; line-height:23px; margin:10px 3px;">
-<dl>
-<dt class="subject"><a class="white" href="#"> Staff Information</a></dt>
-   	<dd>';
-	if($access_right !== '1' && $access_right !== '3'){
-	$links .= '<a href="staff_info.php">Add Report </a><br />
-	<a href="edit_staff_info.php">Edit Report </a><br />
-	<!--<a href="upload_staff_info.php">Upload Report </a><br />
-	<a href="view_staff_info_file.php">View Report File </a><br />-->
 
-	';
-	}
-	$links .= '<a href="view_staff_info.php">View Report </a><br />
-	<!--a href="total_staff_info.php">Summary </a-->
-	</dd>
-<dt><a class="white" href="#" title="Training Needs Assessment"> Training Needs...</a></dt>
-   	<dd>';
-	if($access_right !== '1' && $access_right !== '3'){
-	$links .= '<a href="training_needs.php">Add Report </a><br />
-	<a href="edit_training_needs.php">Edit Report </a><br />
-	<!--<a href="upload_training_needs.php">Upload Report </a><br />-->
+$self = $_SERVER['PHP_SELF'];
+$file = basename($self);
 
-	';
-	}
-	$links .= '<a href="view_training_needs.php">View Report </a><br />
-	<!--a href="total_training_needs.php">Summary </a-->
-	</dd>
-<dt><a class="white" href="#"> Scheduled Training</a></dt>
-    <dd>';
-	if($access_right !== '1' && $access_right !== '3'){
-	$links .= '<a href="scheduled_training.php">Add Report </a><br />
-	<a href="edit_scheduled_training.php">Edit Report </a><br />
-	
-	<a href="add_scheduled_facil.php">Add Facilitator </a><br />
-	<!--<a href="upload_scheduled_training.php">Upload Report </a><br />-->
-	';
+$type = ($file != 'arearep.php') ? 'list-modal' : '';
+$btnType = ($file != 'arearep.php') ? 'show-toggle' : 'hide-toggle';
+
+$accessRight = [
+	['staff_info.php' => 'Add Report',
+	 'edit_staff_info.php' => 'Edit Report'],
+	['training_needs.php' => 'Add Report',
+	'edit_training_needs.php' => 'Edit Report'],
+	['scheduled_training.php' => 'Add Report',
+	'edit_scheduled_training.php' => 'Edit Report',
+	'add_scheduled_facil.php' => 'Add Facilitator'],
+	['new_training.php' => 'Add Report',
+	'edit_new_training.php' => 'Edit Report'],
+	['peit.php' => 'Add Report',
+	'edit_peit.php' => 'Edit Report'],
+	['industrial_training.php' => 'Add Report',
+	'edit_industrial_training.php' => 'Edit Report',
+	'add_apprenticeship.php' => 'Add Company Details'],
+	['course_approval.php' => 'Add Report',
+	'edit_course_approval.php' => 'Edit Report'],
+	['in-company.php' => 'Add Report',
+	'edit_in-company.php' => 'Edit Report',
+	'add_in_comp.php' => 'Add Company Detail',
+	'add_in_part.php' => 'Add Participant Detail',
+	'add_in_facilitator.php' => 'Add Facilitator Detail'],
+	['siwes_matters.php' => 'Add Report',
+	'edit_siwes_matters.php' => 'Edit Report'],
+	['reimbursement.php' => 'Add Report',
+	'edit_reimbursement.php' => 'Edit Report',
+	'add_comp_reimburse.php' => 'Add Company Details'],
+	['emp_stat.php' => 'Add Report',	
+	'edit_emp_stat.php' => 'Edit Report',
+	'add_defaulter.php' => 'Add Defaulter Detail'],
+	['training_contribution.php' => 'Add Report',
+	'edit_training_contribution.php' => 'Edit Report',
+	'add_comp_cont.php' => 'Add Company Details'],
+	['verification_of_acct.php' => 'Add Report',
+	'edit_verification_of_acct.php' => 'Edit Report',
+	'add_comp_verd.php' => 'Add Comp Details'],
+	['revenue_gen.php' => 'Add Report',
+	'edit_revenue_gen.php' => 'Edit Report'],
+	['outstanding_course.php' => 'Add Report',
+	'edit_outstanding_course.php' => 'Edit Report',
+	'add_comp_outstanding.php' => 'Add Comp Details'],
+	['other_income.php' => 'Add Report',
+	'edit_other_income.php' => 'Edit Report'],
+	['nisdp_participant.php' => 'Add Trainee',
+	'add_nisdp_craftmen.php' => 'Add Mastercraftmen'],
+	['tsdp_participant.php' => 'Add Trainee',
+	'add_tsdp_craftmen.php' => 'Add Mastercraftmen'],
+	['itf_collaboration.php' => 'Add Trainee',
+	'add_itf_collaborator.php' => 'Add Collaborators'],
+	['entrepreneurship.php' => 'Add Report',
+	'add_entre_part.php' => 'Add Participant Detail',
+	'add_entre_facilitator.php' => 'Add Facilitator Detail']
+];
+
+function accesslinks($access_right, &$accessRight)
+{
+	static $id = 0;
+
+	if($access_right !== '1' && $access_right !== '3' && isset($accessRight[$id]))
+	{
+		foreach ($accessRight[$id] as $href => $title)
+		{
+			$links[] = '<li> <a href="'.$href.'"> '.$title.' </a> </li>'.PHP_EOL;
+		}
 	}
 
-	$links .= '<a href="view_scheduled_training.php">View Report </a><br />
-	<a href="each_participant.php">View Participant </a><br />
-	<a href="view_facil.php">View Facilitator </a><br />
-	<!--a href="total_scheduled_training.php">Summary </a-->
-	</dd>
-<dt><a class="white" href="#"> Unscheduled Training</a></dt>
-    <dd>';
-	if($access_right !== '1' && $access_right !== '3'){
-	$links .= '<a href="unscheduled_training.php">Add Report </a><br />
-    <a href="edit_unscheduled_training.php">Edit Report </a><br />
-	
-	<a href="add_unscheduled_facil.php">Add Facilitator </a><br />
-	<!--<a href="upload_unscheduled_training.php">Upload Report </a><br />-->';
-	}
-	$links .= '<a href="view_unscheduled_training.php">View Report </a><br />
-	<a href="each_un_participant.php">View Participant </a><br />
-	<a href="view_unfacil.php">View Facilitator </a><br />
-	<!--a href="total_unscheduled_training.php">Summary </a-->
-	</dd>
-<dt><a class="white" href="#" title="New Training Package Developed and Test-run"> New Training Package...</a></dt>
-    <dd>';
-	if($access_right !== '1' && $access_right !== '3'){
-	$links .= '<a href="new_training.php">Add Report </a><br />
-	<a href="edit_new_training.php">Edit Report </a><br />
-	<!--<a href="upload_new_training.php">Upload Report </a><br />-->';
-	}
-	$links .= '<a href="view_new_training.php">View Report </a><br />
-	<!--a href="total_new_training.php">Summary </a-->
-	</dd>
-<dt><a class="white" href="#" title"Process & Productivity Improvement Programme"> PPIT</a></dt>
-    <dd>';
-	if($access_right !== '1' && $access_right !== '3'){
-	$links .= '<a href="peit.php">Add Report </a><br />
-	<a href="edit_peit.php">Edit Report </a><br />
-	<!--<a href="upload_peit.php">Upload Report </a><br />-->';
-	}
-	$links .= '<a href="view_peit.php">View Report </a><br />
-	<!--a href="total_peit.php">Summary </a-->
-	</dd>
-<dt><a class="white" href="#"> Apprenticeship </a></dt>
-    <dd>';
-	if($access_right !== '1' && $access_right !== '3'){
-	$links .= '<a href="industrial_training.php">Add Report </a><br />
-	<a href="edit_industrial_training.php">Edit Report </a><br />
-	<a href="add_apprenticeship.php">Add Company Details </a><br />
-	<!--<a href="upload_industrial_training.php">Upload Report </a><br />-->';
-	}
-	$links .= '<a href="view_industrial_training.php">View Report </a><br />
-	<a href="view_apprenticeship.php">View Company Details </a><br />
-	<!--a href="total_industrial_training.php">Summary </a-->
-	</dd>
-<dt><a class="white" href="#"> Course Approval</a></dt>
-    <dd>';
-	if($access_right !== '1' && $access_right !== '3'){
-	$links .= '<a href="course_approval.php">Add Report </a><br />
-	<a href="edit_course_approval.php">Edit Report </a><br />
-	<!--<a href="upload_course_approval.php">Upload Report </a><br />-->';
-	}
-	$links .= '<a href="view_course_approval.php">View Report </a><br />
-	<!--a href="total_course_approval.php">Summary </a-->
-	</dd>
-<dt><a class="white" href="#"> In-Company Safety</a></dt>
-    <dd>';
-	if($access_right !== '1' && $access_right !== '3'){
-	$links .= '<a href="in-company.php">Add Report </a><br />
-	<a href="edit_in-company.php">Edit Report </a><br />
-	<a href="add_in_comp.php">Add Company Detail </a><br />
-	<a href="add_in_part.php">Add Participant Detail </a><br />
-	<a href="add_in_facilitator.php">Add Facilitator Detail</a><br />
-	<!--<a href="upload_in-company.php">Upload Report </a><br />-->';
-	}
-	$links .= '<a href="view_in-company.php">View Report </a><br />
-	<!--a href="total_in-company.php">Summary </a-->
-	</dd>
-<dt><a class="white" href="#"> Siwes Matters</a></dt>
-    <dd>';
-	if($access_right !== '1' && $access_right !== '3'){
-	$links .= '<a href="siwes_matters.php">Add Report </a><br />
-	<a href="edit_siwes_matters.php">Edit Report </a><br />
-	<!--<a href="upload_siwes_matters.php">Upload Report </a><br />-->';
-	}
-	$links .= '<a href="view_siwes_matters.php">View Report </a><br />
-	<!--a href="total_siwes_matters.php">Summary </a-->
-	</dd>
-<dt><a class="white" href="#"> Reimbursement</a></dt>
-    <dd>';
-	if($access_right !== '1' && $access_right !== '3'){
-	$links .= '<a href="reimbursement.php">Add Report </a><br />
-	<a href="edit_reimbursement.php">Edit Report </a><br />
-	<a href="add_comp_reimburse.php">Add Company Details </a><br />
-	<!--<a href="upload_reimbursement.php">Upload Report </a><br />-->';
-	}
-	$links .= '<a href="view_reimbursement.php">View Report </a><br />
-	<a href="view_comp_reimburse.php">View Company Details</a><br />
-	<!--a href="total_reimbursement.php">Summary </a-->
-	</dd>
-<dt><a class="white" href="#"> Employers Statistics</a></dt>
-    <dd>';
-	if($access_right !== '1' && $access_right !== '3'){
-	$links .= '<a href="emp_stat.php">Add Report </a><br />
-	<a href="edit_emp_stat.php">Edit Report </a><br />
-	<a href="add_defaulter.php">Add Defaulter Detail </a><br />
-	<!--<a href="upload_emp_stat.php">Upload Report </a><br />-->';
-	}
-	$links .= '<a href="view_emp_stat.php">View Report </a><br />
-	<!--a href="total_emp_stat.php">Summary </a-->
-	</dd>
-<dt><a class="white" href="#"> Training Contribution</a></dt>
-    <dd>';
-	if($access_right !== '1' && $access_right !== '3'){
-	$links .= '<a href="training_contribution.php">Add Report </a><br />
-	<a href="edit_training_contribution.php">Edit Report </a><br />
-	<a href="add_comp_cont.php">Add Company Details </a><br />
-	<!--<a href="upload_training_contribution.php">Upload Report </a><br />-->';
-	}
-	$links .= '<a href="view_training_contribution.php">View Report </a><br />
-	<a href="view_company_cont.php">View Company Details </a><br />
-	<!--a href="total_training_contribution.php">Summary </a-->
-	</dd>
-<dt><a class="white" href="#" title="Verification of Company Accounts"> Verification of Company...</a></dt>
-    <dd>';
-	if($access_right !== '1' && $access_right !== '3'){
-	$links .= '<a href="verification_of_acct.php">Add Report </a><br />
-	<a href="edit_verification_of_acct.php">Edit Report </a><br />
-	<a href="add_comp_verd.php">Add Comp Details </a><br />
-	<!--<a href="upload_verification_of_acct.php">Upload Report </a><br />-->';
-	}
-	$links .= '<a href="view_verification_of_acct.php">View Report </a><br />
-	<!--a href="total_verification_of_acct.php">Summary </a-->
-	</dd>
-<dt><a class="white" href="#"> Revenue From Course</a></dt>
-    <dd>';
-	if($access_right !== '1' && $access_right !== '3'){
-	$links .= '<a href="revenue_gen.php">Add Report </a><br />
-	<a href="edit_revenue_gen.php">Edit Report </a><br />
-	<!--<a href="upload_revenue_gen.php">Upload Report </a><br />-->';
-	}
-	$links .= '<a href="view_revenue_gen.php">View Report </a><br />
-	<!--a href="total_revenue_gen.php">Summary </a-->
-	</dd>
-<dt><a class="white" href="#" title="Outstanding Course Fee from Previous Years"> Outstanding Course...</a></dt>
-    <dd>';
-	if($access_right !== '1' && $access_right !== '3'){
-	$links .= '<a href="outstanding_course.php">Add Report </a><br />
-	<a href="edit_outstanding_course.php">Edit Report </a><br />
-	<a href="add_comp_outstanding.php">Add Comp Details </a><br />
-	<!--<a href="upload_outstanding_course.php">Upload Report </a><br />-->';
-	}
-	$links .= '<a href="view_outstanding_course.php">View Report </a><br />
-	<a href="view_comp_outstanding.php">View Company Details </a><br />
-	<!--a href="total_outstanding_course.php">Summary </a-->
-	</dd>
-<dt><a class="white" href="#" title="Other Income Generated"> Other Income...</a></dt>
-    <dd>';
-	if($access_right !== '1' && $access_right !== '3'){
-	$links .= '<a href="other_income.php">Add Report </a><br />
-	<a href="edit_other_income.php">Edit Report </a><br />
-	<!--<a href="upload_other_income.php">Upload Report </a><br />-->';
-	}
-	$links .= '<a href="view_other_income.php">View Report </a><br />
-	<!--a href="total_other_income.php">Summary </a-->
-	</dd>
-<dt><a class="white" href="#"> ITF Flagship Programme</a></dt>
-    <dd>';
-	if($access_right !== '1' && $access_right !== '3'){
-	$links .= '<a href="nisdp_participant.php">Add Trainee </a><br />
-	<!--a href="edit_nisdp_participant.php">Edit Trainee </a><br /-->
-	<a href="add_nisdp_craftmen.php">Add Mastercraftmen </a><br />
-	<!--<a href="upload_nisdp_participant.php">Upload Report </a><br />-->';
-	}
-	$links .= '<a href="view_nisdp.php">View Report </a><br />
-	<a href="view_craftsman.php">View Mastercraftmen </a>
-	<!--a href="total_other_income.php">Summary </a-->
-	</dd>
-<dt><a class="white" href="#"> ITF-NECA Programme</a></dt>
-    <dd>';
-	if($access_right !== '1' && $access_right !== '3'){
-	$links .= '<a href="tsdp_participant.php">Add Trainee </a><br />
-	<!--a href="edit_tsdp_participant.php">Edit Trainee </a><br /-->
-	<a href="add_tsdp_craftmen.php">Add Mastercraftmen </a><br />
-	<!--<a href="upload_tsdp_participant.php">Upload Report </a><br />-->';
-	}
-	$links .= '<a href="view_tsdp.php">View Report </a><br />
-	<!--a href="total_other_income.php">Summary </a-->
-	</dd>
-<dt><a class="white" href="#"> Collaborations</a></dt>
-    <dd>';
-	if($access_right !== '1' && $access_right !== '3'){
-	$links .= '<a href="itf_collaboration.php">Add Trainee </a><br />
-	<!--a href="edit_itf_collaboration.php">Edit Trainee </a><br / -->
-	<a href="add_itf_collaborator.php">Add Collaborators </a><br />
-	<!--<a href="upload_itf_collaboration.php">Upload Report </a><br />-->';
-	}
-	$links .= '<a href="view_itf_collaboration.php">View Report </a><br />
-	<!--a href="total_itf_collaboration.php">Summary </a-->
-	</dd>
-<dt><a class="white" href="#" title="Entrepreneurship Development Programme"> Entrepreneurship Dev...</a></dt>
-    <dd>';
-	if($access_right !== '1' && $access_right !== '3'){
-	$links .= '<a href="entrepreneurship.php">Add Report </a><br />
-	<!--a href="edit_entrepreneurship.php">Edit Report </a><br / -->
-	<a href="add_entre_part.php">Add Participant Detail </a><br />
-	<a href="add_entre_facilitator.php">Add Facilitator Detail</a><br />
-	<!--<a href="upload_entrepreneurship.php">Upload Report </a><br />-->';
-	}
-	$links .= '<a href="view_entrepreneurship.php">View Report </a><br />
-	<!--a href="total_entrepreneurship.php">Summary </a-->
-	</dd>
-</dl>
-</span></td>';
+	$id++;
 
-echo $links;
+	return implode("\n", $links);
+}
 ?>
+
+<section class="<?=$type?>">
+	<section class="menu-bar-list">
+		<div class="menu-list">
+			<span class="header dropdown">
+				<h1 class="title"> Staff Information </h1>
+				<span class="arrow"><i class="fa fa-caret-down"></i></span>
+			</span>
+			<span class="body">
+				<ul>
+					<?=accesslinks($access_right, $accessRight)?>
+					<li><a href="view_staff_info.php">View Report </a></li>
+				</ul>
+			</span>
+		</div>
+		
+		<div class="menu-list">
+			<span class="header dropdown">
+				<h1 class="title"> Training Needs </h1>
+				<span class="arrow"><i class="fa fa-caret-down"></i></span>
+			</span>
+			<span class="body">
+				<ul>
+					<?=accesslinks($access_right, $accessRight)?>
+					<li><a href="view_training_needs.php">View Report </a></li>
+				</ul>
+			</span>
+		</div>
+
+		<div class="menu-list">
+			<span class="header dropdown">
+				<h1 class="title"> Scheduled Training </h1>
+				<span class="arrow"><i class="fa fa-caret-down"></i></span>
+			</span>
+			<span class="body">
+				<ul>
+					<?=accesslinks($access_right, $accessRight)?>
+					<li><a href="view_scheduled_training.php">View Report </a></li>
+					<li><a href="each_participant.php">View Participant </a></li>
+					<li><a href="view_facil.php">View Facilitator </a></li>
+				</ul>
+			</span>
+		</div>
+
+		<div class="menu-list">
+			<span class="header dropdown">
+				<h1 class="title"> Unscheduled Training </h1>
+				<span class="arrow"><i class="fa fa-caret-down"></i></span>
+			</span>
+			<span class="body">
+				<ul>
+					<?=accesslinks($access_right, $accessRight)?>
+					<li><a href="view_unscheduled_training.php">View Report </a></li>
+					<li><a href="each_un_participant.php">View Participant </a></li>
+					<li><a href="view_unfacil.php">View Facilitator </a></li>
+				</ul>
+			</span>
+		</div>
+
+		<div class="menu-list">
+			<span class="header dropdown">
+				<h1 class="title"> New Training Package </h1>
+				<span class="arrow"><i class="fa fa-caret-down"></i></span>
+			</span>
+			<span class="body">
+				<ul>
+					<?=accesslinks($access_right, $accessRight)?>
+					<li><a href="view_new_training.php">View Report </a></li>
+				</ul>
+			</span>
+		</div>
+
+		<div class="menu-list">
+			<span class="header dropdown">
+				<h1 class="title"> PPIT </h1>
+				<span class="arrow"><i class="fa fa-caret-down"></i></span>
+			</span>
+			<span class="body">
+				<ul>
+					<?=accesslinks($access_right, $accessRight)?>
+					<li><a href="view_peit.php">View Report </a></li>
+				</ul>
+			</span>
+		</div>
+
+		<div class="menu-list">
+			<span class="header dropdown">
+				<h1 class="title"> Apprenticeship </h1>
+				<span class="arrow"><i class="fa fa-caret-down"></i></span>
+			</span>
+			<span class="body">
+				<ul>
+					<?=accesslinks($access_right, $accessRight)?>
+					<li><a href="view_industrial_training.php">View Report </a></li>
+					<li><a href="view_apprenticeship.php">View Company Details </a></li>
+				</ul>
+			</span>
+		</div>
+
+		<div class="menu-list">
+			<span class="header dropdown">
+				<h1 class="title"> Course Approval </h1>
+				<span class="arrow"><i class="fa fa-caret-down"></i></span>
+			</span>
+			<span class="body">
+				<ul>
+					<?=accesslinks($access_right, $accessRight)?>
+					<li><a href="view_course_approval.php">View Report </a></li>
+				</ul>
+			</span>
+		</div>
+
+		<div class="menu-list">
+			<span class="header dropdown">
+				<h1 class="title"> In-Company Safety </h1>
+				<span class="arrow"><i class="fa fa-caret-down"></i></span>
+			</span>
+			<span class="body">
+				<ul>
+					<?=accesslinks($access_right, $accessRight)?>
+					<li><a href="view_in-company.php">View Report </a></li>
+				</ul>
+			</span>
+		</div>
+
+		<div class="menu-list">
+			<span class="header dropdown">
+				<h1 class="title"> Siwes Matters </h1>
+				<span class="arrow"><i class="fa fa-caret-down"></i></span>
+			</span>
+			<span class="body">
+				<ul>
+					<?=accesslinks($access_right, $accessRight)?>
+					<li><a href="view_siwes_matters.php">View Report </a></li>
+				</ul>
+			</span>
+		</div>
+
+		<div class="menu-list">
+			<span class="header dropdown">
+				<h1 class="title"> Reimbursement </h1>
+				<span class="arrow"><i class="fa fa-caret-down"></i></span>
+			</span>
+			<span class="body">
+				<ul>
+					<?=accesslinks($access_right, $accessRight)?>
+					<li><a href="view_reimbursement.php">View Report </a></li>
+					<li><a href="view_comp_reimburse.php">View Company Details</a></li>
+				</ul>
+			</span>
+		</div>
+
+		<div class="menu-list">
+			<span class="header dropdown">
+				<h1 class="title"> Employers Statistics </h1>
+				<span class="arrow"><i class="fa fa-caret-down"></i></span>
+			</span>
+			<span class="body">
+				<ul>
+					<?=accesslinks($access_right, $accessRight)?>
+					<li><a href="view_emp_stat.php">View Report </a></li>
+				</ul>
+			</span>
+		</div>
+
+		<div class="menu-list">
+			<span class="header dropdown">
+				<h1 class="title"> Training Contribution </h1>
+				<span class="arrow"><i class="fa fa-caret-down"></i></span>
+			</span>
+			<span class="body">
+				<ul>
+					<?=accesslinks($access_right, $accessRight)?>
+					<li><a href="view_training_contribution.php">View Report </a></li>
+					<li><a href="view_company_cont.php">View Company Details </a></li>
+				</ul>
+			</span>
+		</div>
+
+		<div class="menu-list">
+			<span class="header dropdown">
+				<h1 class="title"> Verification of Company </h1>
+				<span class="arrow"><i class="fa fa-caret-down"></i></span>
+			</span>
+			<span class="body">
+				<ul>
+					<?=accesslinks($access_right, $accessRight)?>
+					<li><a href="view_verification_of_acct.php">View Report </a></li>
+				</ul>
+			</span>
+		</div>
+
+		<div class="menu-list">
+			<span class="header dropdown">
+				<h1 class="title"> Revenue From Course </h1>
+				<span class="arrow"><i class="fa fa-caret-down"></i></span>
+			</span>
+			<span class="body">
+				<ul>
+					<?=accesslinks($access_right, $accessRight)?>
+					<li><a href="view_revenue_gen.php">View Report </a></li>
+				</ul>
+			</span>
+		</div>
+
+		<div class="menu-list">
+			<span class="header dropdown">
+				<h1 class="title"> Outstanding Course </h1>
+				<span class="arrow"><i class="fa fa-caret-down"></i></span>
+			</span>
+			<span class="body">
+				<ul>
+					<?=accesslinks($access_right, $accessRight)?>
+					<li><a href="view_outstanding_course.php">View Report </a></li>
+					<li><a href="view_comp_outstanding.php">View Company Details </a></li>
+				</ul>
+			</span>
+		</div>
+
+		<div class="menu-list">
+			<span class="header dropdown">
+				<h1 class="title"> Other Income </h1>
+				<span class="arrow"><i class="fa fa-caret-down"></i></span>
+			</span>
+			<span class="body">
+				<ul>
+					<?=accesslinks($access_right, $accessRight)?>
+					<li><a href="view_other_income.php">View Report </a></li>
+				</ul>
+			</span>
+		</div>
+
+		<div class="menu-list">
+			<span class="header dropdown">
+				<h1 class="title"> ITF Flagship Programme </h1>
+				<span class="arrow"><i class="fa fa-caret-down"></i></span>
+			</span>
+			<span class="body">
+				<ul>
+					<?=accesslinks($access_right, $accessRight)?>
+					<li><a href="view_nisdp.php">View Report </a></li>
+					<li><a href="view_craftsman.php">View Mastercraftmen </a></li>
+				</ul>
+			</span>
+		</div>
+
+		<div class="menu-list">
+			<span class="header dropdown">
+				<h1 class="title"> ITF-NECA Programme </h1>
+				<span class="arrow"><i class="fa fa-caret-down"></i></span>
+			</span>
+			<span class="body">
+				<ul>
+					<?=accesslinks($access_right, $accessRight)?>
+					<li><a href="view_tsdp.php">View Report </a></li>
+				</ul>
+			</span>
+		</div>
+
+		<div class="menu-list">
+			<span class="header dropdown">
+				<h1 class="title"> Collaborations </h1>
+				<span class="arrow"><i class="fa fa-caret-down"></i></span>
+			</span>
+			<span class="body">
+				<ul>
+					<?=accesslinks($access_right, $accessRight)?>
+					<li><a href="view_itf_collaboration.php">View Report </a></li>
+				</ul>
+			</span>
+		</div>
+
+		<div class="menu-list">
+			<span class="header dropdown">
+				<h1 class="title"> Entrepreneurship Dev </h1>
+				<span class="arrow"><i class="fa fa-caret-down"></i></span>
+			</span>
+			<span class="body">
+				<ul>
+					<?=accesslinks($access_right, $accessRight)?>
+					<li><a href="view_entrepreneurship.php">View Report </a></li>
+				</ul>
+			</span>
+		</div>
+	</section>
+</section>
+
+<div class="menu-list-toggle <?=$btnType?>">
+	<div class="toggle-btn"><i class="fa fa-plus"></i> </div>
+</div>
+
+<style>
+	.hide-toggle{display:none;}
+	.list-modal{display:none; z-index:20; position:fixed; background:rgb(248, 249, 252); padding:15px;
+	max-height:90%; overflow:scroll; box-shadow:0px 0px 10px rgba(0,0,0,0.1); border-bottom-right-radius:50px;
+	opacity:0; transition:opacity 0.7s ease-in-out;}
+	.menu-bar-list{display:grid; grid-template-columns:repeat(4, 1fr); grid-gap:30px;}
+	.menu-bar-list .menu-list{height:50px; background:#fff; box-shadow: 0px 10px 10px rgba(0,0,0,0.1);
+	transition:all 0.5s ease-in-out; display: flex;padding: 10px;flex-direction: column;}
+	.menu-list .header{display: flex;align-items: center;justify-content: space-between;width: 100%;}
+	.menu-list .header h1{font-size:16px; margin:0px; padding:0px;}
+	.menu-bar-list .menu-list:hover{cursor:pointer; box-shadow: 0px 0px 10px rgba(0,0,0,0.1);}
+	.header .arrow{width:30px; height:30px; display:flex; justify-content:center; align-items:center;
+	background:#e44738; border-radius:50%; align-self:flex-end; color:#fff;
+	transform:rotate(0deg); transition:transform 0.5s ease-in-out;}
+	.arrow.rotate-arrow{transform:rotate(180deg); transition:transform 0.5s ease-in-out;}
+
+
+	/* body */
+	.menu-bar-list .body{border-top:1px solid rgba(0,0,0,0.05); margin-top:7px; padding-top:15px;
+	display:none; height:0%; overflow:hidden; opacity:0; transition: height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+	align-self:center; width: 100%;}
+	.body.toggleShow{height:100%; opacity:1; transition: height 0.5s ease-in-out, opacity 0.5s ease-in-out;}
+	.menu-bar-list .body ul{list-style:none; padding:0px; margin:0px;}
+	.menu-bar-list .body ul li{padding:0px; line-height:26px;}
+	.menu-bar-list .body ul li a{color:#e34738; font-size:14px;}
+
+	.menu-list-toggle{position:fixed; bottom:20px; right:3%; z-index:30;}
+	.menu-list-toggle .toggle-btn{height:60px; width:60px; border-radius:50%; background:#e14435; display:flex;
+	justify-content:center; align-items:center; box-shadow:-5px 10px 10px rgba(0,0,0,0.1); transition:all 0.5s ease-in-out;}
+	.menu-list-toggle .toggle-btn:hover{box-shadow:-5px 10px 10px rgba(0,0,0,0.3); cursor:pointer;}
+	.toggle-btn .fa{color:#fff; font-size:20px;}
+</style>
+
+<script>
+
+	let dropdownsTitle = document.querySelectorAll('.header.dropdown');
+	let menutoggle = document.querySelector('.menu-list-toggle');
+
+	if (dropdownsTitle.length > 0)
+	{
+		[].forEach.call(dropdownsTitle, (d)=>{
+			d.addEventListener('click', showDropdownBody);
+		});
+
+		function showDropdownBody()
+		{
+			// get arrow
+			const arrow = this.querySelector('.arrow');
+			const body = this.parentNode.querySelector('.body');
+			const list = this.parentNode;
+
+			if (!arrow.hasAttribute('data-clicked'))
+			{
+				// show
+				arrow.setAttribute('data-clicked', true);
+				arrow.classList.add('rotate-arrow');
+				body.style.display = 'block';
+				list.style.height =  '200px';
+
+				setTimeout(()=>{
+					body.style.opacity = 1;
+					body.classList.add('toggleShow');
+				},100);
+			}
+			else
+			{
+				// hide
+				arrow.removeAttribute('data-clicked');
+				arrow.classList.remove("rotate-arrow");
+				list.style.height = '50px';
+				body.style.opacity = 0;
+				setTimeout(()=>{
+					body.classList.remove('toggleShow');
+				},500);
+			}
+		}	
+	}
+
+	if (menutoggle != null)
+	{
+		const fa = menutoggle.querySelector('.fa');
+		const listModal = document.querySelector('.list-modal');
+
+		menutoggle.addEventListener('click', ()=>{
+			if (!menutoggle.hasAttribute('data-clicked'))
+			{
+				listModal.style.display = 'block';
+				setTimeout(()=>{
+					listModal.style.opacity = 1;
+					menutoggle.setAttribute('data-clicked', true);
+					fa.classList.add('fa-minus')
+					fa.classList.remove('fa-plus');
+				},100);
+			}
+			else
+			{
+				listModal.style.opacity = 0;
+				setTimeout(()=>{
+					listModal.style.display = 'none';
+					menutoggle.removeAttribute('data-clicked');
+					fa.classList.add('fa-plus')
+					fa.classList.remove('fa-minus');
+				},400);
+			}
+		});
+	}
+
+</script>

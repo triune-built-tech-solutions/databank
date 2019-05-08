@@ -109,30 +109,12 @@ require_once("../functions/function.php");
 			}
 			?>
 		</div>
-		<table>
-			<tr>
-				<?php
-				require_once("side_link.php");
-				?>
-				<td>
 
-					<h2 align="center">Welcome</h2><br/>
-					<img src="../old_assets/images/logo.png" width="500" height="150">
+		<?php
+			require_once("side_link.php");
+		?>
+		
 
-
-				</td>
-			</tr>
-		</table>
-		<script>
-            $('dd').filter('dd:nth-child(n+2)').hide();
-
-            $('dt').click(function () {
-                $(this).next().siblings('dd').hide();
-                $(this).next().show();
-            });
-            //$('.subject').click(removeClass('li.page'));
-
-		</script>
 	</div><!-- close content -->
 	<div id="divi">
 		&nbsp;
