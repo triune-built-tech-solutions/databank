@@ -35,7 +35,7 @@ if($_POST){
 
 	
 	
-$in="insert into special_rpt values(null,'$_POST[title]','$_POST[desc]','$_POST[programmestart]','$target_file','$_POST[dept]', '$added_by')";
+$in="insert into special_rpt values(null,'$_POST[title]','$_POST[desc]','$_POST[programmestart]','$target_file','$_POST[dept]')";
 
 
 $q=mysqli_query($GLOBALS["___mysqli_ston"], $in);

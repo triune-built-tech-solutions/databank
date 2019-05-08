@@ -236,5 +236,5 @@ while($row_access = mysqli_fetch_array($result_access)){
 
 </div><br />
 <?php
-include("../includes/footer.php");
+include("../includes/old_footer.php");
 ?>

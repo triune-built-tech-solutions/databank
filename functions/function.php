@@ -1,4 +1,5 @@
 <?php
+error_reporting(1);
 require_once("../includes/connections.php");
 
 	function mysql_prep($value) {
@@ -50,19 +51,15 @@ require_once("../includes/connections.php");
 		if (count($matches) > 0 && count($matches[0]) > 0)
 		{
 			$continue = true;
-	​
 			foreach($matches[0] as $i => $match)
 			{
 				$begin = $match[0];
-	​
 				$trim = trim($match);
 				$end = substr($trim, -2);
-	​
 				if ($end != "';")
 				{
 					$new = preg_replace('/(\/\/)([\s\S]*?\n)/','',$match);
 					$new = preg_replace('/(\/\/){1,}/','',$new);
-	​
 					if (trim($new) == "")
 					{
 						$minjs = str_replace($match, $new, $minjs);
@@ -80,9 +77,7 @@ require_once("../includes/connections.php");
 					{
 						$minjs = str_replace($match, $new, $minjs);
 					}
-	​
 					$continue = true;
-	​
 				}
 				else
 				{
@@ -90,19 +85,16 @@ require_once("../includes/connections.php");
 					{
 						$new = preg_replace('/(\/\/)([\s\S]*?\n)/','',$match);
 						$new = preg_replace('/(\/\/){1,}/','',$new);
-						
-	​
+
 						$minjs = str_replace($match, $new, $minjs);
 					}	
 				}
 			}
-	​
 			preg_match_all('/(^((?![a-zA-Z|\\\\|\"|\'|\s])|([\s|\t|\n|\r]))|([\s|;]))+(\/\/)([\s\S]*?\n)/', $minjs, $matches);
 			
 			if (count($matches) > 0 && count($matches[0]) > 0)
 			{
 				$bf = $minjs;
-	​
 				if ($current < $level)
 				{
 					$minjs = singleline($minjs, $level, ($current+1), $from);
@@ -110,10 +102,8 @@ require_once("../includes/connections.php");
 				}
 			}
 		}
-	​
 		return $minjs;
 	}
-	​
 	// remove new line single comment
 	function removeNewlineComment($minjs)
 	{
@@ -125,10 +115,8 @@ require_once("../includes/connections.php");
 				$with = $match[1][$i];
 				$minjs = str_replace($ma, $with, $minjs);
 			}
-	​
 			$minjs = removeNewlineComment($minjs);
 		}
-	​
 		return $minjs;
 	}
 

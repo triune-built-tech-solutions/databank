@@ -87,4 +87,5 @@
          
       </div>
     <!-- Main content -->
+    </section>
   

@@ -1,112 +1,104 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
+<html lang="en">
 
-<html xmlns="http://www.w3.org/1999/xhtml" style="height: 552px; margin-top: 34px !important;" toolbar_fixed="1">
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<head>
 
-<meta name="robots" content="noindex">
-<meta name="robots" content="nofollow"><title>INDUSTRIAL TRAINING FUND (ITF) DATABANK SYSTEM</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
 
-<link rel="shortcut icon" href="old_assets/images/icon.gif" type="image/x-icon">
+	<title>Login - ITF Data Bank</title>
 
-<link href="admin/old_assets/jqueryui.css" rel="stylesheet" type="text/css">
+	<!-- Custom fonts for this template-->
+	<link href="./assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+	      rel="stylesheet">
 
-<link href="admin/old_assets/styles.css" rel="stylesheet" type="text/css">
+	<!-- Custom styles for this template-->
+	<link href="./assets/css/sb-admin-2.min.css" rel="stylesheet">
 
-<script type="text/javascript" src="admin/old_assets/jquery.min.js"></script>
-<script type="text/javascript" src="admin/old_assets/jquery-ui.custom.min.js"></script>
-
-<script type="text/javascript" src="admin/old_assets/jquery.appear-1.1.1.js"></script>
-<script type="text/javascript" src="admin/old_assets/tooltip.min.js"></script>
-
-<script type="text/javascript" src="admin/old_assets/tinymce.editor.js"></script>
-
-<script type="text/javascript" src="admin/old_assets/core.js"></script>
-<script type="text/javascript" src="admin/old_assets/ajax.js"></script>
-
-<body>
-<img class="baj" src="old_assets/images/logo1.png" />
-<div class="header-wrap">
-<div id="header">
-	<div id="logo">
-    <p class="site_name">Industrial Training Fund</p>		
-	</div>
-
-	</div>
-
-<!--header--></div></div>
-<div id="content"><!-- open content -->
-    <div id="main_content"><!-- open main_content -->
-    <span style="float:left; padding:5px; margin:5px; border:1px #A80203 solid"><img src="old_assets/images/itf_home.jpg" /></span>
-     <p class="story">Established in 1971, the Industrial Training Fund has operated consistently and painstakingly within the context of its enabling laws Decree 47 of 1971 as Amended in the 2011 ITF ACT. The objective for which the Fund was established has been pursued vigorously and efficaciously. In the four decades of its existence, the ITF has not only raised training consciousness in the economy, but has also helped in generating a corps of skilled indigenous manpower which has been manning and managing various sectors of the national economy.</p>
-
-	<p>Over the years, pursuant to its statutory responsibility, the ITF has expanded its structures, developed training programmes, reviewed its strategies, operations and services in order to meet the expanding, and changing demands for skilled manpower in the economy. Beginning as a Parastatal “B” in 1971, headed by a Director, the ITF became a Parastatal “A” in 1981, with a Director-General as the Chief Executive under the aegis of the Ministry of Industry. The Fund has a 13 member Governing Council and operates with 10 Departments and 4 Units at the Headquarters, 32 Area Offices, 3 Skills Training Centres, and a Centre for Industrial Training Excellence.</p>
-    <p>A Governing Council of thirteen members drawn from the public and private sectors will be appointed by the Federal Government to manage the Fund. This is to reflect the co-operative spirit of the enterprise, the need for private employers, organized labour, and the providers and users of training to co-operate in identifying training needs and devising training policy and system. The thirteen member Governing Council of the Fund shall comprise of the following:</p>
-
-<p>As part of its responsibilities, the ITF provides Direct Training, Vocational and Apprentice Training, Research and Consultancy Service, Reimbursement of up to 50% Levy paid by employers of labour registered with it, and administers the Students Industrial Work Experience Scheme (SIWES). It also provides human resource development information and training technology service to industry and commerce to enhance their manpower capacity and in-house training delivery effort.</p>
-
-<p>The main thrust of ITF programmes and services is to stimulate human performance, improve productivity, and indce value-added production in industry and commerce. Through its SIWES and Vocational and Apprentice Training Programmes, the Fund also builds capacity for graduates and youth self-employment, in the context of Small Scale Industrialization, in the economy.</p>
-<div id="link">
-<fieldset style="float:left;">
-              <legend><fieldset class="red"> Our Other Websites</fieldset></legend>
-              <br>
-				<img src="old_assets/images/itf_download.jpg" align="absbottom">
-               <a class="anchor" href="http://www.itf-nigeria.com" class="unnamed1" target="_blank"><strong>ITF NIGERIA</strong></a>
-              </fieldset>
-              
-              <fieldset style="float:left; margin-left:20px;">
-              <legend></legend>><fieldset class="red"> Download Mozillar Browser</fieldset></legend>
-              <img src="old_assets/images/Firefox.jpg" align="absbottom">
-              <a class="anchor" href="http://dc108.4shared.com/download/d1nv7AxT/Mozila_firefox_35.rar?tsid=20100831-174136-f61f44f0
-" target="_blank"> <strong> Direct Link</strong> </a>
-
-              </fieldset>
-              <fieldset style="float:left; margin-left:20px;">
-              <legend><fieldset class="red"> Download Chrome Browser</fieldset></legend>
-              <img src="old_assets/images/chrome.jpg" align="absbottom">
-              <a class="anchor" href="http://www.softpedia.com/dyn-postdownload.php?p=108363&t=4&i=1" target="_blank"> <strong> Direct Link</strong> </a>
-   </fieldset>
-</div>
-</div><!-- close main_content -->
-<div id="side_bar"><!-- open side_content -->
-<div id="login">
-    <h2 align="center"> Staff Login </h2>
-    <form name="signin" method="post" action="admin/processlogin.php">
-	<p class="ques"><strong>Username :</strong> <input type="text" size="25" name="username" /></p>
-    <p class="ques"><b>Password :</b> <input type="password" size="25" name="password" /></p>
-    <p align="center"><input type="submit" value="Sign_in" name="login" /></p>
-    </form>
-</div>
-    <div id="about">
-    <fieldset class="a1">
-<legend><fieldset class="a1"><span style="font-size:13px; font-weight:bold; color:#03C">About The Databank</span></fieldset></legend>
-
-<p class="story">This Databank has the ability to collate the ITF Data(information) from their various office, ranging from the Departments, Area Office, Training Center and units in a secured and computerized manner for flexible data flow.</p>
-</fieldset>
-    </div>
-    <div id="peri">
-    <fieldset class="a1">
-        <legend><fieldset class="a1"><span style="font-size:13px; font-weight:bold; color:#03C">Prerequisites</span></fieldset></legend>
-        <p>For this Application to run well, You need the following:</p>
-        <ul type="disc">
-        <li>Any Internet Enabled Device </li>
-        <li>Javascript Enabled Web browsers </li>
-        <li>Browser </li>
-        <ol type="i" style="margin-left:10px;">
-        <li>Mozilla Firefox (Better)</li> 
-        <li>Google Chrome (Good)</li>
-        <li>Internet Explorer </li>
-        <li>Netscape</li>  
-        </ol>
-        </ul>
-	</fieldset>
-
-    </div><!-- close side_content -->
-    
-</div><!-- close content --><p class="both" />
-<div id="divi">
-
-</div>
-<div align="center" id="style1"><span style="color:#F00">&copy;</span> &#176 2008 - <?=date('Y')?> &nbsp; &nbsp;<span style="color:#03C">Industrial Training Fund.</span> All Rights Reserved.</div>
-</body>
 </head>
+
+<body class="bg-gradient-danger">
+
+<div class="container">
+
+	<!-- Outer Row -->
+	<div class="row justify-content-center">
+
+		<div class="col-xl-10 col-lg-12 col-md-9">
+
+			<div class="card o-hidden border-0 shadow-lg my-5">
+				<div class="card-body p-0">
+					<!-- Nested Row within Card Body -->
+					<div class="row">
+						<div class="col-lg-6 d-none d-lg-block bg-dark container">
+							<h1 class="m-5 h1 text-capitalize text-gray-500 mb-4 text-center">Welcome</h1>
+							<hr>
+							<h1 class="m-5 h4 text-white" style="font-weight: 100; line-height: 2;">
+								The ITF Data Bank System provides an interface for interacting with business
+								intelligence, data, and reports generated to the Industrial Training Fund.
+							</h1>
+						</div>
+						<div class="col-lg-6">
+							<hr>
+							<div class="col-sm-6" style="margin: 0 auto">
+								<img class="img-fluid" alt="ITF Logo" src="./assets/img/itf-logo.png">
+							</div>
+							<div class="p-5">
+								<div class="text-center">
+									<h1 class="h1 text-capitalize text-dark mb-4">Data Bank System</h1>
+								</div>
+								<form class="user" name="signin" method="post" action="admin/processlogin.php">
+									<div class="form-group">
+										<input name="username" type="text" class="form-control form-control-user"
+										       id="exampleInputEmail" aria-describedby="emailHelp"
+										       placeholder="Enter Email Address...">
+									</div>
+									<div class="form-group">
+										<input name="password" type="password" class="form-control form-control-user"
+										       id="exampleInputPassword" placeholder="Password">
+									</div>
+									<div class="form-group">
+										<div class="custom-control custom-checkbox small">
+											<input type="checkbox" class="custom-control-input" id="customCheck">
+											<label class="custom-control-label" for="customCheck">Remember Me</label>
+										</div>
+									</div>
+									<input type="submit" value="Login" name="login" href="header.html"
+									       class="btn btn-primary btn-user btn-block"/>
+									<hr>
+								</form>
+								<div class="text-center">
+									<a class="small" href="#forgot-password">Forgot Password?</a>
+								</div>
+								<div class="text-center">
+									<a class="small" href="#register">Create an Account!</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
+
+<!-- Bootstrap core JavaScript-->
+<script src="./assets/vendor/jquery/jquery.min.js"></script>
+<script src="./assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="./assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="./assets/js/sb-admin-2.min.js"></script>
+
+</body>
+
 </html>
