@@ -4,3 +4,6 @@
 /admin/jscripts/.DS_Store
 /admin/special_rpt/
 /*.DS_Store
+
+/.idea/workspace.xml
+

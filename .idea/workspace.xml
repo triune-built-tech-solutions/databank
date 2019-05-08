@@ -2,18 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="227b6305-258f-4f14-9007-a8b4ca456301" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/add_defaulter.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/add_defaulter.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/add_procurement.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/add_procurement.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/edit_rep.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/edit_rep.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/meeting.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/meeting.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/query_report.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/query_report.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/report.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/report.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/side_link.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/side_link.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/vet_report.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/vet_report.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/view_meeting.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/view_meeting.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/view_procurement.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/view_procurement.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/header.php" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -67,7 +57,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="add_procurement.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="add_procurement.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/admin/add_procurement.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="273">
@@ -93,7 +83,38 @@
                 <element signature="e#119#125#0" expanded="true" />
                 <element signature="e#1#7#0" expanded="true" />
                 <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+                <element signature="e#2904#2910#0#HTML" expanded="true" />
+                <element signature="e#2910#2916#0#HTML" expanded="true" />
+                <element signature="e#2916#2922#0#HTML" expanded="true" />
+                <element signature="e#2922#2928#0#HTML" expanded="true" />
+                <element signature="e#3177#3183#0#HTML" expanded="true" />
+                <element signature="e#3183#3189#0#HTML" expanded="true" />
+                <element signature="e#3189#3195#0#HTML" expanded="true" />
+                <element signature="e#3195#3201#0#HTML" expanded="true" />
+                <element signature="e#3679#3685#0#HTML" expanded="true" />
+                <element signature="e#3685#3691#0#HTML" expanded="true" />
+                <element signature="e#3691#3697#0#HTML" expanded="true" />
+                <element signature="e#3697#3703#0#HTML" expanded="true" />
+                <element signature="e#4187#4193#0#HTML" expanded="true" />
+                <element signature="e#4193#4199#0#HTML" expanded="true" />
+                <element signature="e#4326#4332#0#HTML" expanded="true" />
+                <element signature="e#4332#4338#0#HTML" expanded="true" />
+                <element signature="e#4509#4515#0#HTML" expanded="true" />
+                <element signature="e#4515#4521#0#HTML" expanded="true" />
+                <element signature="e#4673#4679#0#HTML" expanded="true" />
+                <element signature="e#4679#4685#0#HTML" expanded="true" />
+                <element signature="e#4840#4846#0#HTML" expanded="true" />
+                <element signature="e#4846#4852#0#HTML" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="217">
+              <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -171,7 +192,6 @@
         <option value="$PROJECT_DIR$/admin/each_rep.php" />
         <option value="$PROJECT_DIR$/includes/orm.php" />
         <option value="$PROJECT_DIR$/admin/log_query.php" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/admin/add_defaulter.php" />
         <option value="$PROJECT_DIR$/admin/side_link.php" />
         <option value="$PROJECT_DIR$/admin/report.php" />
@@ -183,6 +203,7 @@
         <option value="$PROJECT_DIR$/admin/view_meeting.php" />
         <option value="$PROJECT_DIR$/admin/view_procurement.php" />
         <option value="$PROJECT_DIR$/admin/add_procurement.php" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -229,11 +250,6 @@
             <path>
               <item name="databank" type="b2602c69:ProjectViewProjectNode" />
               <item name="databank" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="databank" type="b2602c69:ProjectViewProjectNode" />
-              <item name="databank" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -307,12 +323,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="133431000" />
+    <option name="totallyTimeSpent" value="133681000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16905445" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16905445" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50069445" side_tool="true" weight="0.32932693" />
@@ -321,34 +338,46 @@
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" sideWeight="0.49930555" visible="true" weight="0.32880098" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49930555" visible="true" weight="0.32880098" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16905445" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50069445" side_tool="true" weight="0.32932693" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32932693" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" sideWeight="0.49930555" visible="true" weight="0.32880098" />
+      <window_info id="Favorites" order="2" side_tool="true" />
     </layout>
     <layout-to-restore>
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16388889" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32932693" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49930555" weight="0.32932693" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50069445" side_tool="true" weight="0.32932693" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -589,22 +618,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/admin/each_rep.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="217">
           <caret line="53" column="30" selection-start-line="53" selection-start-column="30" selection-end-line="53" selection-end-column="30" />
-          <folding>
-            <element signature="n#div#0;n#div#0;n#!!top" />
-            <element signature="e#2253#2793#0#PHP" />
-            <element signature="e#2794#3233#0#PHP" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -882,7 +899,36 @@
             <element signature="e#119#125#0" expanded="true" />
             <element signature="e#1#7#0" expanded="true" />
             <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+            <element signature="e#2904#2910#0#HTML" expanded="true" />
+            <element signature="e#2910#2916#0#HTML" expanded="true" />
+            <element signature="e#2916#2922#0#HTML" expanded="true" />
+            <element signature="e#2922#2928#0#HTML" expanded="true" />
+            <element signature="e#3177#3183#0#HTML" expanded="true" />
+            <element signature="e#3183#3189#0#HTML" expanded="true" />
+            <element signature="e#3189#3195#0#HTML" expanded="true" />
+            <element signature="e#3195#3201#0#HTML" expanded="true" />
+            <element signature="e#3679#3685#0#HTML" expanded="true" />
+            <element signature="e#3685#3691#0#HTML" expanded="true" />
+            <element signature="e#3691#3697#0#HTML" expanded="true" />
+            <element signature="e#3697#3703#0#HTML" expanded="true" />
+            <element signature="e#4187#4193#0#HTML" expanded="true" />
+            <element signature="e#4193#4199#0#HTML" expanded="true" />
+            <element signature="e#4326#4332#0#HTML" expanded="true" />
+            <element signature="e#4332#4338#0#HTML" expanded="true" />
+            <element signature="e#4509#4515#0#HTML" expanded="true" />
+            <element signature="e#4515#4521#0#HTML" expanded="true" />
+            <element signature="e#4673#4679#0#HTML" expanded="true" />
+            <element signature="e#4679#4685#0#HTML" expanded="true" />
+            <element signature="e#4840#4846#0#HTML" expanded="true" />
+            <element signature="e#4846#4852#0#HTML" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
         </state>
       </provider>
     </entry>
