@@ -1,288 +1,310 @@
 <?php
-require_once("header.php");
+require_once("../includes/header.php");
 ?>
-<div id="content"><!-- open content -->
-<div id="depart">
-<?php
-if(isset($department)){
-	$query_dept = "SELECT * FROM department where id = $department";
-	$result_dept = mysqli_query( $connect, $query_dept);
-	
-	while($row_dept = mysqli_fetch_array($result_dept)){
-		$department = $row_dept[1];
-		echo "<p><span style='color:#A80203; font-size:13px; font-weight:bold;'> DEPARTMENT:</span> " . $row_dept[1] . ".&nbsp;&nbsp;&nbsp;";
-	}
-} else {
-	$query_unit = "SELECT * FROM unit where id = $unit";
-	$result_unit = mysqli_query( $connect, $query_unit);
-		
-		while($row_unit = mysqli_fetch_array($result_unit)){
-			$department = $row_unit[1];
-			echo "<p><span style='color:#A80203; font-size:13px; font-weight:bold;'> UNIT:</span> " . $row_unit[1] . ".&nbsp;&nbsp;&nbsp;";
-		}
-}
-if(isset($division)){
-	$query_div = "SELECT * FROM division where id = $division";
-	$result_div = mysqli_query( $connect, $query_div);
-	
-	while($row_div = mysqli_fetch_array($result_div)){
-		echo "|&nbsp; <span style='color:#A80203; font-size:13px; font-weight:bold;'> DIVISION:</span> " . $row_div[2] . ".&nbsp;&nbsp;&nbsp;";
-	}
-}else {
-	$query_div = "SELECT * FROM sub_unit where id = $sub_unit";
-	$result_div = mysqli_query( $connect, $query_div);
-	
-	while($row_div = mysqli_fetch_array($result_div)){
-		$division = $row_div[2];
-		echo "|&nbsp; <span style='color:#A80203; font-size:13px; font-weight:bold;'> SUB UNIT:</span> " . $row_div[2] . ".&nbsp;&nbsp;&nbsp;";
-	}
-}
-if(isset($section)){
-	$query_section = "SELECT * FROM section where section_id = $section";
-	$result_section = mysqli_query( $connect, $query_section);
-	
-	while($row_section = mysqli_fetch_array($result_section)){
-		echo "|&nbsp; <span style='color:#A80203; font-size:13px; font-weight:bold;'> SECTION:</span> " . $row_section[2] . ".</p>";
-	}
-}
-?>
-</div>
-<div align="center">
-<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" name="report_query">
+	<div id="content"><!-- open content -->
+		<div id="depart">
+			<?php
+			if (isset($department)) {
+				$query_dept = "SELECT * FROM department where id = $department";
+				$result_dept = mysqli_query($connect, $query_dept);
 
-<select name="month"><option value=" ">-Month-</option>
-<?php
-$query_emonth = "Select * from emonth";
-$result_emonth = mysqli_query( $connect, $query_emonth);
+				while ($row_dept = mysqli_fetch_array($result_dept)) {
+					$department = $row_dept[1];
+					echo "<p><span style='color:#A80203; font-size:13px; font-weight:bold;'> DEPARTMENT:</span> " . $row_dept[1] . ".&nbsp;&nbsp;&nbsp;";
+				}
+			} else {
+				$query_unit = "SELECT * FROM unit where id = $unit";
+				$result_unit = mysqli_query($connect, $query_unit);
 
-while($row_emonth = mysqli_fetch_array($result_emonth)){
-	echo "<option value='".$row_emonth[0]."'>". $row_emonth[1] . "</option>";
-}
-?>
-</select> &nbsp;&nbsp;&nbsp;
+				while ($row_unit = mysqli_fetch_array($result_unit)) {
+					$department = $row_unit[1];
+					echo "<p><span style='color:#A80203; font-size:13px; font-weight:bold;'> UNIT:</span> " . $row_unit[1] . ".&nbsp;&nbsp;&nbsp;";
+				}
+			}
+			if (isset($division)) {
+				$query_div = "SELECT * FROM division where id = $division";
+				$result_div = mysqli_query($connect, $query_div);
 
-<select name="year"><option value=" ">-Year-</option>
-<?php
-$query_eyear = "Select * from eyear";
-$result_eyear = mysqli_query( $connect, $query_eyear);
+				while ($row_div = mysqli_fetch_array($result_div)) {
+					echo "|&nbsp; <span style='color:#A80203; font-size:13px; font-weight:bold;'> DIVISION:</span> " . $row_div[2] . ".&nbsp;&nbsp;&nbsp;";
+				}
+			} else {
+				$query_div = "SELECT * FROM sub_unit where id = $sub_unit";
+				$result_div = mysqli_query($connect, $query_div);
 
-while($row_eyear = mysqli_fetch_array($result_eyear)){
-	echo "<option value='".$row_eyear[1]."'>". $row_eyear[1] . "</option>";
-}
-?>
-</select>&nbsp;&nbsp;&nbsp;
+				while ($row_div = mysqli_fetch_array($result_div)) {
+					$division = $row_div[2];
+					echo "|&nbsp; <span style='color:#A80203; font-size:13px; font-weight:bold;'> SUB UNIT:</span> " . $row_div[2] . ".&nbsp;&nbsp;&nbsp;";
+				}
+			}
+			if (isset($section)) {
+				$query_section = "SELECT * FROM section where section_id = $section";
+				$result_section = mysqli_query($connect, $query_section);
 
-<select name="office_type" id="office_t"><option value=" ">-office_type-</option>
-<?php
-$query_office_type = "Select * from office_type";
-$result_office_type = mysqli_query( $connect, $query_office_type);
+				while ($row_section = mysqli_fetch_array($result_section)) {
+					echo "|&nbsp; <span style='color:#A80203; font-size:13px; font-weight:bold;'> SECTION:</span> " . $row_section[2] . ".</p>";
+				}
+			}
+			?>
+		</div>
+		<div align="center">
+			<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" name="report_query" class="form-group form-inline d-flex justify-content-center">
 
-while($row_office_type = mysqli_fetch_array($result_office_type)){
-	echo "<option value='".$row_office_type[0]."'>". $row_office_type[1] . "</option>";
-}
-?>
-</select>&nbsp;&nbsp;&nbsp;
+				<select class="form-control" name="month">
+					<option value=" ">-Month-</option>
+					<?php
+					$query_emonth = "Select * from emonth";
+					$result_emonth = mysqli_query($connect, $query_emonth);
 
-<select name="office_loc" id="office_loc">
-<option value=" "> </option>
-</select>&nbsp;&nbsp;&nbsp;
-<input type="submit" name="begin_query" value="Begin Query" />
-</form>
-<br />
+					while ($row_emonth = mysqli_fetch_array($result_emonth)) {
+						echo "<option value='" . $row_emonth[0] . "'>" . $row_emonth[1] . "</option>";
+					}
+					?>
+				</select> &nbsp;&nbsp;&nbsp;
 
-<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" name="period_query">
-Periodic Query : <select name="month_f" id="month_f"><option value=" ">--From--</option>
-<?php
-$query_emonth = "Select * from emonth";
-$result_emonth = mysqli_query( $connect, $query_emonth);
+				<select class="form-control ml-3" name="year">
+					<option value=" ">-Year-</option>
+					<?php
+					$query_eyear = "Select * from eyear";
+					$result_eyear = mysqli_query($connect, $query_eyear);
 
-while($row_emonth = mysqli_fetch_array($result_emonth)){
-	echo "<option value='".$row_emonth[0]."'>". $row_emonth[1] . "</option>";
-}
-?>
-</select> &nbsp;&nbsp;||&nbsp;&nbsp; 
-<select name="month_t" id="month_t"><option value=" ">--To--</option>
-<?php
-$query_emonth = "Select * from emonth";
-$result_emonth = mysqli_query( $connect, $query_emonth);
+					while ($row_eyear = mysqli_fetch_array($result_eyear)) {
+						echo "<option value='" . $row_eyear[1] . "'>" . $row_eyear[1] . "</option>";
+					}
+					?>
+				</select>&nbsp;&nbsp;&nbsp;
 
-while($row_emonth = mysqli_fetch_array($result_emonth)){
-	echo "<option value='".$row_emonth[0]."'>". $row_emonth[1] . "</option>";
-}
-?>
-</select>&nbsp;&nbsp;&nbsp;&nbsp;
-<select name="p_year"><option value=" ">-Year-</option>
-<?php
-$query_eyear = "Select * from eyear";
-$result_eyear = mysqli_query( $connect, $query_eyear);
+				<select class="form-control ml-3" name="office_type" id="office_t">
+					<option value=" ">-office_type-</option>
+					<?php
+					$query_office_type = "Select * from office_type";
+					$result_office_type = mysqli_query($connect, $query_office_type);
 
-while($row_eyear = mysqli_fetch_array($result_eyear)){
-	echo "<option value='".$row_eyear[1]."'>". $row_eyear[1] . "</option>";
-}
-?>
-</select>&nbsp;&nbsp;
-<input type="submit" name="begin_period" value="Query" />
-</form>
+					while ($row_office_type = mysqli_fetch_array($result_office_type)) {
+						echo "<option value='" . $row_office_type[0] . "'>" . $row_office_type[1] . "</option>";
+					}
+					?>
+				</select>&nbsp;&nbsp;&nbsp;
 
-</div><br />
-<table>
-<tr><th colspan="13">NEW TRAINING PACKAGE DEVELOPED AND TEST-RUNNED </th></tr>
-<tr><th>S/n</th>
-<th>Office Type</th>
-<th>Office Location</th>
-<th>Target</th>
-<th>Developed</th>
-<th>Test Runned</th>
-<th>participants</th>
-<th>Organizations</th>
-<th>Category</th>
-<th>Added by</th>
-<th>Month</th>
-<th>Year </th>
-<th>Date Added</th>
-</tr>
-<?php
-if(isset($_GET['err']) && $_GET['err'] == 'exist'){
-	echo '<script>
+				<select class="form-control ml-3" name="office_loc" id="office_loc">
+					<option value=" "></option>
+				</select>&nbsp;&nbsp;&nbsp;
+				<button class="btn btn-success ml-3" type="submit" name="begin_query" value="Begin Query">Begin Query</button>
+			</form>
+			<br/>
+
+			<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" name="period_query" class="form-group form-inline d-flex justify-content-center">
+				Periodic Query : <select class="form-control ml-3 mr-3" name="month_f" id="month_f">
+					<option value=" ">--From--</option>
+					<?php
+					$query_emonth = "Select * from emonth";
+					$result_emonth = mysqli_query($connect, $query_emonth);
+
+					while ($row_emonth = mysqli_fetch_array($result_emonth)) {
+						echo "<option value='" . $row_emonth[0] . "'>" . $row_emonth[1] . "</option>";
+					}
+					?>
+				</select> &nbsp;&nbsp;||&nbsp;&nbsp;
+				<select class="form-control ml-3" name="month_t" id="month_t">
+					<option value=" ">--To--</option>
+					<?php
+					$query_emonth = "Select * from emonth";
+					$result_emonth = mysqli_query($connect, $query_emonth);
+
+					while ($row_emonth = mysqli_fetch_array($result_emonth)) {
+						echo "<option value='" . $row_emonth[0] . "'>" . $row_emonth[1] . "</option>";
+					}
+					?>
+				</select>&nbsp;&nbsp;&nbsp;&nbsp;
+				<select class="form-control ml-3" name="p_year">
+					<option value=" ">-Year-</option>
+					<?php
+					$query_eyear = "Select * from eyear";
+					$result_eyear = mysqli_query($connect, $query_eyear);
+
+					while ($row_eyear = mysqli_fetch_array($result_eyear)) {
+						echo "<option value='" . $row_eyear[1] . "'>" . $row_eyear[1] . "</option>";
+					}
+					?>
+				</select>&nbsp;&nbsp;
+				<button class="btn btn-primary ml-3" type="submit" name="begin_period" value="Query">Query</button>
+			</form>
+
+		</div>
+
+		<div>
+			<?php require_once ("side_link.php") ?>
+		</div>
+
+		<br/>
+		<div class="card shadow mt-5">
+			<div class="card-header">
+				<h4>New Training Packages Developed and Tested</h4>
+			</div>
+			<div class="card-body">
+				<table class="table table-responsive table-hover">
+					<thead>
+					<tr>
+						<th>#</th>
+						<th>Office Type</th>
+						<th>Office Location</th>
+						<th>Target</th>
+						<th>Developed</th>
+						<th>Test Run</th>
+						<th>participants</th>
+						<th>Organizations</th>
+						<th>Category</th>
+						<th>Added by</th>
+						<th>Month</th>
+						<th>Year</th>
+						<th>Date Added</th>
+					</tr>
+					</thead>
+
+					<?php
+					if (isset($_GET['err']) && $_GET['err'] == 'exist') {
+						echo '<script>
 			alert("Report for specified office and date already exist");
 		</script>';
-}
+					}
 
-if(isset($_POST['begin_query'])){
-	$month = $_POST['month']; 
-	$year = $_POST['year'];
-	$office_type = $_POST['office_type'];
-	$office_location = $_POST['office_loc'];
-	
-	if($month !== " "){
-		$opt = "where month = ".$month;
-	}
-	if($year !== " " && !isset($opt)){
-		$opt = "where year = '".$year."'";
-	} else if($year !== " " && isset($opt)){
-		$opt .= " and year = ".$year;
-	}
-	if($office_type !== " " && !isset($opt)){
-		$opt = "where office_type = ".$office_type;
-	} else if($office_type !== " " && isset($opt)){
-		$opt .= " and office_type = ".$office_type;
-	}
-	if($office_location !== " "){
-		$opt .= " and office_location = ".$office_location;
-	}
-}
+					if (isset($_POST['begin_query'])) {
+						$month = $_POST['month'];
+						$year = $_POST['year'];
+						$office_type = $_POST['office_type'];
+						$office_location = $_POST['office_loc'];
 
-if(isset($_POST['begin_period'])){
-	$month_f = $_POST['month_f'];
-	$month_t = $_POST['month_t'];
-	$p_year = $_POST['p_year'];
-	
-	if($month_f !== " " && $month_t !== " " && $p_year !== " "){
-		$opt = "where month between ".$month_f." and ".$month_t." and year = ".$p_year." ";
-	} else if($month_f !== " " && $month_t !== " "){
-		$opt = "where month between ".$month_f." and ".$month_t." ";
-	}
-	
-	if($p_year !== " " && isset($opt)){
-		$opt .= "and year = '".$p_year."'";
-	}
-}
+						if ($month !== " ") {
+							$opt = "where month = " . $month;
+						}
+						if ($year !== " " && !isset($opt)) {
+							$opt = "where year = '" . $year . "'";
+						} else if ($year !== " " && isset($opt)) {
+							$opt .= " and year = " . $year;
+						}
+						if ($office_type !== " " && !isset($opt)) {
+							$opt = "where office_type = " . $office_type;
+						} else if ($office_type !== " " && isset($opt)) {
+							$opt .= " and office_type = " . $office_type;
+						}
+						if ($office_location !== " ") {
+							$opt .= " and office_location = " . $office_location;
+						}
+					}
 
-if(empty($opt)){
-	$opt = " ";
-}
+					if (isset($_POST['begin_period'])) {
+						$month_f = $_POST['month_f'];
+						$month_t = $_POST['month_t'];
+						$p_year = $_POST['p_year'];
 
-if($access_right == 4){
-	$query_report_view = "select * from new_training $opt order by year desc, month desc limit 80";
-} else if($access_right == 3 || $access_right == 1){
-	$query_report_view = "select * from new_training where office_location = '".$office_location."' order by year desc, month desc limit 80";
-} else {
-	$query_report_view = "select * from new_training where added_by = '".$_SESSION['user_name']."' order by year desc, month desc limit 80";
-}
+						if ($month_f !== " " && $month_t !== " " && $p_year !== " ") {
+							$opt = "where month between " . $month_f . " and " . $month_t . " and year = " . $p_year . " ";
+						} else if ($month_f !== " " && $month_t !== " ") {
+							$opt = "where month between " . $month_f . " and " . $month_t . " ";
+						}
 
-$result_report_view = mysqli_query( $connect, $query_report_view);
+						if ($p_year !== " " && isset($opt)) {
+							$opt .= "and year = '" . $p_year . "'";
+						}
+					}
 
-for($i=0; $i<mysqli_num_rows($result_report_view); $i++){
-	$rep_id = mysqli_result($result_report_view,  $i,  "id");
-	$office_type = mysqli_result($result_report_view,  $i,  "office_type");
-	$office_location = mysqli_result($result_report_view,  $i,  "office_location");
-	$month = mysqli_result($result_report_view,  $i,  "month");
-	$year = mysqli_result($result_report_view,  $i,  "year");
-	$auto_date = mysqli_result($result_report_view,  $i,  "auto_date");
-	$added_by = mysqli_result($result_report_view,  $i,  "added_by");
-	$target = mysqli_result($result_report_view,  $i,  "target");
-	$proposed = mysqli_result($result_report_view,  $i,  "proposed");
-	$test_runned = mysqli_result($result_report_view,  $i,  "test_runned");
-	$participants = mysqli_result($result_report_view,  $i,  "participants");
-	$organizations = mysqli_result($result_report_view,  $i,  "organizations");
-	$category = mysqli_result($result_report_view,  $i,  "category");
-	
-	$query_office = "SELECT * FROM area_office where office_type_id = $office_type and id = $office_location";
-	$result_office = mysqli_query( $connect, $query_office);
-	
-	while($row_office = mysqli_fetch_array($result_office)){
-		$office_location = $row_office['2'];
-	}
-	
-		if ($i % 2){
-			$bg_color = "#a8c2f7"; 	
-		}
-		else{
-			$bg_color = "#f0f9f0";
-		}
+					if (empty($opt)) {
+						$opt = " ";
+					}
 
-$query_office = "SELECT type FROM office_type where id = $office_type";
-	$result_office = mysqli_query( $connect, $query_office);
-	
-	while($row_office = mysqli_fetch_assoc($result_office)){
-		$office_name = $row_office['type'];
-	}
-$month_query = mysqli_query( $connect, "select * from emonth where emonth_id = $month"); $month_row = mysqli_fetch_array($month_query);
+					if ($access_right == 4) {
+						$query_report_view = "select * from new_training $opt order by year desc, month desc limit 80";
+					} else if ($access_right == 3 || $access_right == 1) {
+						$query_report_view = "select * from new_training where office_location = '" . $office_location . "' order by year desc, month desc limit 80";
+					} else {
+						$query_report_view = "select * from new_training where added_by = '" . $_SESSION['user_name'] . "' order by year desc, month desc limit 80";
+					}
 
-$ih = $i + 1;
+					$result_report_view = mysqli_query($connect, $query_report_view);
 
-echo '<tr>
-<td bgcolor="'.$bg_color.'">'.$ih .'</td>
-<td bgcolor="'.$bg_color.'">'. $office_name .'</td>
-<td bgcolor="'.$bg_color.'">'. $office_location .'</td>
-<td bgcolor="'.$bg_color.'">'.$target.'</td>
-<td bgcolor="'.$bg_color.'">'.$proposed.'</td>
-<td bgcolor="'.$bg_color.'">'.$test_runned.'</td>
-<td bgcolor="'.$bg_color.'">'.$participants.'</td>
-<td bgcolor="'.$bg_color.'">'.$organizations.'</td>
-<td bgcolor="'.$bg_color.'">'.$category.'</td>
-<td bgcolor="'.$bg_color.'">'.$added_by .'</td>
-<td bgcolor="'.$bg_color.'">'.$month_row[1] .'</td>
-<td bgcolor="'.$bg_color.'">'.$year .'</td>
-<td bgcolor="'.$bg_color.'">'.$auto_date .'</td>
+					for ($i = 0; $i < mysqli_num_rows($result_report_view); $i++) {
+						$rep_id = mysqli_result($result_report_view, $i, "id");
+						$office_type = mysqli_result($result_report_view, $i, "office_type");
+						$office_location = mysqli_result($result_report_view, $i, "office_location");
+						$month = mysqli_result($result_report_view, $i, "month");
+						$year = mysqli_result($result_report_view, $i, "year");
+						$auto_date = mysqli_result($result_report_view, $i, "auto_date");
+						$added_by = mysqli_result($result_report_view, $i, "added_by");
+						$target = mysqli_result($result_report_view, $i, "target");
+						$proposed = mysqli_result($result_report_view, $i, "proposed");
+						$test_runned = mysqli_result($result_report_view, $i, "test_runned");
+						$participants = mysqli_result($result_report_view, $i, "participants");
+						$organizations = mysqli_result($result_report_view, $i, "organizations");
+						$category = mysqli_result($result_report_view, $i, "category");
+
+						$query_office = "SELECT * FROM area_office where office_type_id = $office_type and id = $office_location";
+						$result_office = mysqli_query($connect, $query_office);
+
+						while ($row_office = mysqli_fetch_array($result_office)) {
+							$office_location = $row_office['2'];
+						}
+
+						if ($i % 2) {
+							$bg_color = "#a8c2f7";
+						} else {
+							$bg_color = "#f0f9f0";
+						}
+
+						$query_office = "SELECT type FROM office_type where id = $office_type";
+						$result_office = mysqli_query($connect, $query_office);
+
+						while ($row_office = mysqli_fetch_assoc($result_office)) {
+							$office_name = $row_office['type'];
+						}
+						$month_query = mysqli_query($connect, "select * from emonth where emonth_id = $month");
+						$month_row = mysqli_fetch_array($month_query);
+
+						$ih = $i + 1;
+
+						echo '<tr>
+<td >' . $ih . '</td>
+<td >' . $office_name . '</td>
+<td >' . $office_location . '</td>
+<td >' . $target . '</td>
+<td >' . $proposed . '</td>
+<td >' . $test_runned . '</td>
+<td >' . $participants . '</td>
+<td >' . $organizations . '</td>
+<td >' . $category . '</td>
+<td >' . $added_by . '</td>
+<td >' . $month_row[1] . '</td>
+<td >' . $year . '</td>
+<td >' . $auto_date . '</td>
 </tr>';
 
-$over_total = mysqli_query( $connect, "select sum(target), sum(proposed), sum(test_runned), sum(participants), sum(organizations) from new_training " .$opt." ")or
-die("error ".mysqli_error($GLOBALS["___mysqli_ston"]));
-$result_sum = mysqli_fetch_array($over_total);
+						$over_total = mysqli_query($connect, "select sum(target), sum(proposed), sum(test_runned), sum(participants), sum(organizations) from new_training " . $opt . " ") or
+						die("error " . mysqli_error($GLOBALS["___mysqli_ston"]));
+						$result_sum = mysqli_fetch_array($over_total);
 
-}
+					}
 
-echo 
-'<tr>
+					echo
+						'<tr>
 <td></td>
 <td></td>
 <td></td>
-<td bgcolor="#00FFFF">'.$result_sum[0].'</td>
-<td bgcolor="#00FFFF">'.$result_sum[1].'</td>
-<td bgcolor="#00FFFF">'.$result_sum[2].'</td>
-<td bgcolor="#00FFFF">'.$result_sum[3].'</td>
-<td bgcolor="#00FFFF">'.$result_sum[4].'</td>
+<td bgcolor="#00FFFF">' . $result_sum[0] . '</td>
+<td bgcolor="#00FFFF">' . $result_sum[1] . '</td>
+<td bgcolor="#00FFFF">' . $result_sum[2] . '</td>
+<td bgcolor="#00FFFF">' . $result_sum[3] . '</td>
+<td bgcolor="#00FFFF">' . $result_sum[4] . '</td>
 </tr>';
 
+					?>
+				</table>
+			</div>
+		</div>
+
+	</div><!-- close content -->
+	<div id="divi">
+
+	</div><br/>
+
+<?php
+require_once("../includes/footer.php");
 ?>
-</table>
-</div><!-- close content -->
-<div id="divi">
-
-</div><br />
-<div align="center" id="style1"><span style="color:#F00">&copy;</span> &#176 <?php echo date('Y'); ?>  &nbsp; &nbsp;<span style="color:#03C">Industrial Training Fund.</span> All Rights Reserved.</div>
-<script type="text/javascript" src="old_assets/ajax.js"></script>
-</body>
-</head>
-</html>

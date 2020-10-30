@@ -50,6 +50,31 @@ function sessionX()
 	}
 }
 
+
+if (isset($_GET['download']))
+{
+	$path = '../admin/uploads/' . $_GET['download'];
+
+	if (file_exists($path))
+	{
+		$mime = mime_content_type($path);
+		
+		header('Content-Type: '.$mime);
+		header('Content-Disposition: attachment; filename='.basename($path));
+		header('Content-Length: '.filesize($path));
+		header('Pragma: public');
+		header('Cache-Control: must-revalidate');
+		header('Expires: 0');
+		flush();
+		readfile($path);
+	}
+}
+
+
+// load autoloader
+include("../includes/autoloader.php");
+
+// connections.
 include("../includes/connections.php");
 
 $query = "SELECT * FROM staff_reg where id = $id";
@@ -88,6 +113,13 @@ $result_office = mysqli_query($connect, $query_office);
 
 while ($row_office = mysqli_fetch_array($result_office)) {
 	$office_loc = $row_office['2'];
+}
+
+$query_office = "SELECT * FROM area_office where id = $office_location";
+$result_office = mysqli_query($connect, $query_office);
+
+while ($row_office = mysqli_fetch_array($result_office)) {
+	$office_name = $row_office['2'];
 }
 
 $query_access = "SELECT * FROM assess_right where right_id = $access_right";
@@ -145,7 +177,12 @@ $result_access = mysqli_query($connect, $query_access);
 	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
 
-	<!-- OLD ASSETS ENDS -->
+	<!-- reset -->
+	<link href="../assets/css/wrapper.css" rel="stylesheet">
+	<link href="../assets/css/reset.css" rel="stylesheet">
+
+	<!-- custom -->
+	<link href="../builder/assets3/css/custom.css" rel="stylesheet">
 
 	<style>
 		p > input {
@@ -161,7 +198,7 @@ $result_access = mysqli_query($connect, $query_access);
 <div id="wrapper">
 
 	<!-- Sidebar -->
-	<ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion" id="accordionSidebar">
+	<ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion <?=isset($toggled) ? 'toggled' : null?>" id="accordionSidebar">
 
 		<!-- Sidebar - Brand -->
 		<a class="sidebar-brand d-flex align-items-center justify-content-center h-auto" href="../admin/home.php">
@@ -191,7 +228,7 @@ $result_access = mysqli_query($connect, $query_access);
 			<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
 			   aria-expanded="true" aria-controls="collapseTwo">
 				<i class="fas fa-fw fa-calendar-check"></i>
-				<span>Monthly Report</span>
+				<span>Work Plan Report</span>
 			</a>
 			<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
 				<div class="bg-white py-2 collapse-inner rounded">
@@ -211,23 +248,27 @@ $result_access = mysqli_query($connect, $query_access);
 			</li>
 
 		<!-- Nav Item - Utilities Collapse Menu -->
-		<li class="nav-item">
-			<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#areaoffice"
-			   aria-expanded="true" aria-controls="collapseUtilities">
-				<i class="fab fa-fw fa-readme"></i>
-				<span>Area Office Report</span>
-			</a>
-			<div id="areaoffice" class="collapse" aria-labelledby="headingUtilities"
-			     data-parent="#accordionSidebar">
-				<div class="bg-white py-2 collapse-inner rounded">
-					<a class="collapse-item" href="../admin/arearep.php">Executive Summary</a>
-					<a class="collapse-item" href="../admin/meeting.php">Add Minutes of Meeting</a>
-					<a class="collapse-item" href="../admin/view_meeting.php">View Minute of Meeting</a>
+		<?php if ($access_right == 3 || $access_right == 9) : ?>
+			<li class="nav-item">
+				<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#areaoffice"
+				aria-expanded="true" aria-controls="collapseUtilities">
+					<i class="fab fa-fw fa-readme"></i>
+					<span>Area Office Report</span>
+				</a>
+				<div id="areaoffice" class="collapse" aria-labelledby="headingUtilities"
+					data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<a class="collapse-item" href="../admin/executive_report.php">Executive Report</a>
+						<a class="collapse-item" href="../admin/arearep.php">Executive Summary</a>
+						<a class="collapse-item" href="../admin/meeting.php">Add Minutes of Meeting</a>
+						<a class="collapse-item" href="../admin/view_meeting.php">View Minute of Meeting</a>
+						<a class="collapse-item" href="../admin/monthly_targets.php">Monthly Targets <span class="badge badge-danger"><?=Target\Office::Notification($office_location)?></span></a>
+					</div>
 				</div>
-			</div>
-		</li>
+			</li>
+		<?php endif; ?>
 
-		<li class="nav-item">
+		<!-- <li class="nav-item">
 			<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#otherreports"
 			   aria-expanded="true" aria-controls="collapseUtilities">
 				<i class="fas fa-fw fa-book-reader"></i>
@@ -245,7 +286,9 @@ $result_access = mysqli_query($connect, $query_access);
 				</div>
 			</div>
 		</li>
+ -->
 
+		<?php if ($access_right == 5 || $access_right == 4 || ($access_right == 4 && $department == 10) ) : ?>
 
 		<!-- Divider -->
 		<hr class="sidebar-divider">
@@ -256,6 +299,13 @@ $result_access = mysqli_query($connect, $query_access);
 		</div>
 
 		<li class="nav-item">
+			<a class="nav-link" href="../admin/view_nominal.php">
+				<i class="fas fa-fw fa-chart-line"></i>
+				<span>Nominal Roll</span>
+			</a>
+		</li>
+
+		<!-- <li class="nav-item">
 			<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
 			   aria-expanded="true" aria-controls="collapseUtilities">
 				<i class="fas fa-fw fa-chart-line"></i>
@@ -266,10 +316,26 @@ $result_access = mysqli_query($connect, $query_access);
 				<div class="bg-white py-2 collapse-inner rounded">
 					<a class="collapse-item" href="../admin/add_nominal.php">Add Staff</a>
 					<a class="collapse-item" href="../admin/view_nominal.php">Nominal Roll</a>
-					<a class="collapse-item" href="../admin/view_archive.php">Retired Staff List</a>
+					 <a class="collapse-item" href="../admin/view_archive.php">Retired Staff List</a>
 				</div>
 			</div>
 
+		</li> -->
+
+		<li class="nav-item">
+			<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities1"
+			   aria-expanded="true" aria-controls="collapseUtilities1">
+				<i class="fas fa-fw fa-calendar-check"></i>
+				<span>Corporate Planning</span>
+			</a>
+			<div id="collapseUtilities1" class="collapse" aria-labelledby="headingUtilities"
+			     data-parent="#accordionSidebar">
+				<div class="bg-white py-2 collapse-inner rounded">
+					<a class="collapse-item" href="../admin/performance_indicator.php">Performanace Indicator</a>
+					<a class="collapse-item" href="../admin/score_card.php">Score Card</a>
+					<a class="collapse-item" href="../admin/autofill_kpi.php">KPI's</a>
+				</div>
+			</div>
 		</li>
 
 		<li class="nav-item">
@@ -289,14 +355,17 @@ $result_access = mysqli_query($connect, $query_access);
 
 		<li class="nav-item">
 			<a class="nav-link" href="../admin/admin_log.php">
-				<i class="fas fa-fw fa-sitemap"></i>
+				<i class="fas fa-fw fa-building"></i>
 				<span>Manage Organisation</span>
 			</a>
 		</li>
 
+		<?php endif; ?>
+
 		<!-- Divider -->
 		<hr class="sidebar-divider">
 
+		<?php if ($access_right == 4) : ?>
 		<!-- Heading -->
 		<div class="sidebar-heading">
 			Control Panel
@@ -323,6 +392,31 @@ $result_access = mysqli_query($connect, $query_access);
 				</div>
 			</div>
 		</li>
+
+		<?php \Target\Office::$location = $office_location; ?>
+
+		<li class="nav-item">
+			<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBuilder"
+			   aria-expanded="true" aria-controls="collapseBuilder">
+				<i class="fas fa-fw fa-book"></i>
+				<span>Form Builder</span>
+			</a>
+			<div id="collapseBuilder" class="collapse" aria-labelledby="headingUtilities"
+			     data-parent="#accordionSidebar">
+				<div class="bg-white py-2 collapse-inner rounded">
+					<a class="collapse-item" href="../admin/builder.php">Create Form</a>
+					<a class="collapse-item" href="../admin/view_forms.php">View Forms</a>
+				</div>
+			</div>
+		</li>
+
+		<li class="nav-item">
+			<a class="nav-link" href="../admin/report_builder.php">
+				<i class="fas fa-fw fa-chart-line"></i>
+				<span>Report Builder</span></a>
+		</li>
+		
+		<?php endif; ?>
 
 		<li class="nav-item">
 			<a class="nav-link" href="../admin/signout.php" data-target="#logoutModal">
@@ -405,14 +499,18 @@ $result_access = mysqli_query($connect, $query_access);
 					<li class="nav-item dropdown no-arrow">
 						<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
 						   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							<div class="col">
-								<p class="text-dark mb-0"> <?php echo $tit . " " . $fullname ?> </p>
-								<span class=" text-gray-600 small">
-									<?php
+							<div class="row" style="padding-right: 20px;">
+								<p class="text-dark mb-0" style="align-self: center;"> <?php echo $tit . " " . $fullname ?> </p>
+
+								<span class="text-gray-600 small">
+									<ul>
+									<li><b>Office:</b> <?=$office_name?></li>
+									<li><b>Role:</b> <?php
 										while ($row_access = mysqli_fetch_array($result_access)) {
 											echo  $row_access[1];
 										}
-									?>
+									?></li>
+								</ul>
 								</span>
 							</div>
 							<img class="img-profile rounded-circle" src="../assets/img/person-icon.png">

@@ -1,14 +1,48 @@
 <?php
 error_reporting(E_ALL);
 error_reporting(1);
-		$hostname = "localhost";
-		$username = "itfdataba";
-		$password = "474YdKl6bw";
-		$database = "itfdatab_itfdatabank";
+
+		$configuration = [
+			'mode' => 'dev',
+			'settings' => [
+
+				// development database configuration
+				'dev' => [
+					'hostname' => 'localhost',
+					'username' => 'itfdataba',
+					'password' => '474YdKl6bw',
+					'database' => 'itfdatab_itfdatabank'
+				],
+
+				// live database configuration
+				'live' => [
+					'hostname' => 'localhost',
+					'username' => 'tbsngcom_itf',
+					'password' => 'itfdatabank222',
+					'database' => 'tbsngcom_databank'
+				]
+			]
+		];
+
+		// get mode
+		$__mode = $configuration['mode'];
+		// open connection
+		extract($configuration['settings'][$__mode]);
+		// connect here.
 		$connect = ($GLOBALS["___mysqli_ston"] = mysqli_connect($hostname,  $username,  $password)) or die (mysqli_error($GLOBALS["___mysqli_ston"]));
 		$siteName = "ITF";
 		mysqli_select_db( $connect, $database);
 		$db = new mysqli($hostname, $username, $password, $database);
+
+		if (class_exists('Database\ORM'))
+		{
+			Database\ORM::$connection = [
+				'host' => $hostname,
+				'user' => $username,
+				'pass' => $password,
+				'db' => $database
+			];
+		}
 
 if ($db->connect_error) {
     die("Unable to connect database: " . $db->connect_error);

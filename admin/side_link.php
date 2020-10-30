@@ -204,7 +204,7 @@ function accesslinks($access_right, &$accessRight)
 
 		<div class="menu-list">
 			<span class="header dropdown">
-				<h1 class="title"> Siwes Matters </h1>
+				<h1 class="title"> SIWES Matters </h1>
 				<span class="arrow"><i class="fa fa-caret-down"></i></span>
 			</span>
 			<span class="body">
@@ -325,7 +325,7 @@ function accesslinks($access_right, &$accessRight)
 
 		<div class="menu-list">
 			<span class="header dropdown">
-				<h1 class="title"> ITF-NECA Programme </h1>
+				<h1 class="title">ITF-NECA Programme</h1>
 				<span class="arrow"><i class="fa fa-caret-down"></i></span>
 			</span>
 			<span class="body">
@@ -365,15 +365,19 @@ function accesslinks($access_right, &$accessRight)
 </section>
 
 <div class="menu-list-toggle <?=$btnType?>">
-	<div class="toggle-btn"><i class="fa fa-plus"></i> </div>
+	<div class="toggle-btn"><i class="fa fa-grip-horizontal"></i> </div>
 </div>
 
 <style>
+	.menu-list{
+		border-radius: 5px;
+		border: 2px red;
+	}
 	.hide-toggle{display:none;}
 	.list-modal{display:none; z-index:20; position:fixed; background:rgb(248, 249, 252); padding:15px;
 	max-height:90%; overflow:scroll; box-shadow:0px 0px 10px rgba(0,0,0,0.1); border-bottom-right-radius:50px;
 	opacity:0; transition:opacity 0.7s ease-in-out;}
-	.menu-bar-list{display:grid; grid-template-columns:repeat(4, 1fr); grid-gap:30px;}
+	.menu-bar-list{display:grid; grid-template-columns:repeat(4, 1fr); grid-gap:30px; }
 	.menu-bar-list .menu-list{height:50px; background:#fff; box-shadow: 0px 10px 10px rgba(0,0,0,0.1);
 	transition:all 0.5s ease-in-out; display: flex;padding: 10px;flex-direction: column;}
 	.menu-list .header{display: flex;align-items: center;justify-content: space-between;width: 100%;}
@@ -394,11 +398,12 @@ function accesslinks($access_right, &$accessRight)
 	.menu-bar-list .body ul li{padding:0px; line-height:26px;}
 	.menu-bar-list .body ul li a{color:#e34738; font-size:14px;}
 
-	.menu-list-toggle{position:fixed; bottom:20px; right:3%; z-index:30;}
+	.menu-list-toggle{position:fixed; bottom:76px; right:3%; z-index:30;}
 	.menu-list-toggle .toggle-btn{height:60px; width:60px; border-radius:50%; background:#e14435; display:flex;
 	justify-content:center; align-items:center; box-shadow:-5px 10px 10px rgba(0,0,0,0.1); transition:all 0.5s ease-in-out;}
 	.menu-list-toggle .toggle-btn:hover{box-shadow:-5px 10px 10px rgba(0,0,0,0.3); cursor:pointer;}
 	.toggle-btn .fa{color:#fff; font-size:20px;}
+
 </style>
 
 <script>
@@ -459,7 +464,7 @@ function accesslinks($access_right, &$accessRight)
 					listModal.style.opacity = 1;
 					menutoggle.setAttribute('data-clicked', true);
 					fa.classList.add('fa-minus')
-					fa.classList.remove('fa-plus');
+					fa.classList.remove('fa-grip-horizontal');
 				},100);
 			}
 			else
@@ -468,7 +473,7 @@ function accesslinks($access_right, &$accessRight)
 				setTimeout(()=>{
 					listModal.style.display = 'none';
 					menutoggle.removeAttribute('data-clicked');
-					fa.classList.add('fa-plus')
+					fa.classList.add('fa-grip-horizontal')
 					fa.classList.remove('fa-minus');
 				},400);
 			}

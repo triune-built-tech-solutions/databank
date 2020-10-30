@@ -94,5 +94,5 @@ if(isset($_POST['submit_user']) && isset($_POST['office_location'])){
 	}
 //}
 
-header("location: new_user.php");
+header("location: new_user.php?message=".urlencode('Staff account added successfully.'));
 ?>

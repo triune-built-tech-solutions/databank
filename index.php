@@ -1,3 +1,8 @@
+<?php
+	// start session
+	session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -71,12 +76,12 @@
 									       class="btn btn-primary btn-user btn-block"/>
 									<hr>
 								</form>
-								<div class="text-center">
+								<!-- <div class="text-center">
 									<a class="small" href="#forgot-password">Forgot Password?</a>
 								</div>
 								<div class="text-center">
 									<a class="small" href="#register">Create an Account!</a>
-								</div>
+								</div> -->
 							</div>
 						</div>
 					</div>
@@ -88,6 +93,14 @@
 	</div>
 
 </div>
+
+<?php
+	if(isset($_SESSION['user_name'])){
+		$logged_out = "UPDATE staff_reg SET logged_users='0' WHERE username='".$_SESSION['user_name']."'";
+		$loggedResult = mysqli_query($GLOBALS["___mysqli_ston"], $logged_out); //echo $logged_out; exit;
+		session_destroy();
+	}
+?>
 
 <!-- Bootstrap core JavaScript-->
 <script src="./assets/vendor/jquery/jquery.min.js"></script>

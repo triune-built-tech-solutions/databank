@@ -55,8 +55,17 @@
 		<div class="card-header">
 			<h4>Add new user</h4>
 		</div>
-		<form class="card-body form" method="post" action="add_user.php" name="add_user" id="add_user">
-			<fieldset>
+		<?php
+			if (isset($_GET['message']))
+			{
+				?>
+				<div class="col-lg-12" style="margin-top:20px">
+					<div class="alert alert-success"><?=urldecode($_GET['message'])?></div>
+				</div>
+				<?php
+			}
+		?>
+		<form class="card-body form reset-form reset-form-grid" method="post" action="add_user.php" name="add_user" id="add_user">
 				<div class="form-group form-inline">
 					<label for="staff_no">Staff No:</label>
 					<input class="form-control ml-3" size="35" type="text" name="staff_no" id="staff_no"
@@ -114,25 +123,19 @@
 						}
 						?>
 					</select>
-					<div id="opti" class="ml-3 mr-3 notVisible form-group form-inline">
-						<label>Dept/Unit</label> :
-						<select class="form-control ml-3"  name="opti" id="optio">
-							<option value=" ">-Select-</option>
-							<option value="1">Department</option>
-							<option value="2">Unit</option>
-						</select>
-					</div>
+					
 				</div>
+
 				<!---->
 				<div class="form-group form-inline">
 					<label>Office Location: </label>
-					<select class="form-control ml-3" name="office_location" id="office_loc">
+					<select class="form-control" name="office_location" id="office_loc">
 
 					</select>
 				</div>
 				<div class="form-group form-inline">
-					<span id="d_op" class="form-group form-inline"><label class="">Department: </label>
-						<select class="form-control ml-3" name="department" id="dept"><option
+				<label class="">Department: </label>
+						<select class="form-control" name="department" id="dept"><option
 									value=" ">--Department--</option>
 							<?php
 							$result_dept = mysqli_query($GLOBALS["___mysqli_ston"], "select * from department where status = 1");
@@ -141,13 +144,12 @@
 							}
 							?>
 						</select>
-					</span>&nbsp;&nbsp;
 				</div>
 
-				<div>
-					<div id="un" class="notVisible form-group form-inline">
-						<label >Unit</label> :
-						<select class="form-control ml-3" id="unit" name="unit"><option value=" ">--Unit--</option>
+				<div class="form-group form-inline">
+					<div id="un" class="notVisible">
+						<label >Unit:</label>
+						<select class="form-control" id="unit" name="unit"><option value=" ">--Unit--</option>
 							<?php
 
 							$result_unit = mysqli_query($GLOBALS["___mysqli_ston"], "select * from unit where status = 1");
@@ -157,39 +159,36 @@
 							?>
 						</select>
 					</div>
-					<div id="s_un" class="notVisible form-group form-inline">
+					<div id="s_un" class="notVisible">
 						<label>Sub-unit: </label>
-						<select class="form-control ml-3"  name="sub_unit" id="sub_unit">
+						<select class="form-control"  name="sub_unit" id="sub_unit">
 
 						</select>
 					</div>
+				</div>
 
 				<div class="form-group form-inline">
-					<span id="di_op" class="form-group form-inline">
-						<label>Division: </label>
-						<select class="form-control ml-3" name="division" id="div">
-							<option value=" "> </option>
-
-						</select>
-					</span>&nbsp;&nbsp;
-				</div>
+					<label>Division: </label>
+					<select class="form-control" name="division" id="div">
+						<option value=" "> </option>
+					</select>
 				</div>
 				<div id="s_op" class="form-inline form-group">
-					<label>Section</label> :
+					<label>Section:</label>
 					<select class="form-control ml-3" name="section" id="sect">
 						<option value=" "></option>
 
 					</select>
 				</div>
 				<div class="form-inline form-group">
-					<label>Username</label> :
+					<label>Username:</label>
 					<input class="form-control ml-3 mr-3" type="text" size="35" id="username" name="username" placeholder=""/>
 					<span id="unameInfo">Remember your username, you will need it to log in! </span>
 				</div>
 				<div class="form-inline form-group">
 					<label>Password: </label>
 					<input class="form-control ml-3 mr-3" type="password" size="35" id="pass1" name="password"/>
-					<span id="pass1Info">At least 5 characters: letters, numbers and '_'</span>
+					<span id="pass1Info">At least 5 characters: letters, numbers and special characters.</span>
 				</div>
 				<div class="form-inline form-group">
 					<label>Confirm Password</label>
@@ -208,11 +207,19 @@
 						}
 
 						?>
-					</select></div>
-				<div align="center">
+					</select>
+				</div>
+				<div class="notVisible form-group form-inline">
+					<label>Dept/Unit:</label>
+					<select class="form-control"  name="opti" id="optio">
+						<option value=" ">-Select-</option>
+						<option value="1">Department</option>
+						<option value="2">Unit</option>
+					</select>
+				</div>
+				<div align="center" class="form-btn">
 					<button class="btn btn-success" id="send" type="submit" value="Add user" name="submit_user">Add User</button>
 				</div>
-			</fieldset>
 		</form>
 	</div>
 </div><!-- close content -->
